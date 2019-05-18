@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.dcservicez.a247services.Adopters.Chat_Adopter;
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.dcservicez.a247services.objects.Chat_Itm;
+import com.dcservicez.a247services.objects.Conversation2;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -170,8 +171,9 @@ public class Chat_activity extends AppCompatActivity {
             view1.setEnabled(true);
             view.setEnabled(true);
             view1.setText("");
-            FirebaseDatabase.getInstance().getReference("Users").child(id).child("messages").child(prefs.email()).child("info").setValue(new Conversation(msg));
-            FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child("info").setValue(new Conversation(msg));
+            Conversation2 convrs=new Conversation2(msg);
+            FirebaseDatabase.getInstance().getReference("Users").child(id).child("messages").child(prefs.email()).child("info").setValue(convrs);
+            FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child("info").setValue(convrs);
             Chat_Itm chatItm=new Chat_Itm(msg,System.currentTimeMillis(),0);
             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child(t+"").setValue(chatItm);
 //        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child(t+"").child("msg_type").setValue(0);
@@ -209,15 +211,7 @@ public class Chat_activity extends AppCompatActivity {
             alertDialog.show();
         }
 
-        class Conversation {
-            public long time=System.currentTimeMillis();
-            public  String last_msg;
-            public boolean isread=false;
 
-            public Conversation(String last_msg) {
-                this.last_msg = last_msg;
-            }
-        }
 
         class Task {
             public long time=System.currentTimeMillis();
@@ -323,6 +317,9 @@ public class Chat_activity extends AppCompatActivity {
                 }
             });
         }
+
+
+
 
 
     }

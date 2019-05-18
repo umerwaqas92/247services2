@@ -2,9 +2,9 @@ package com.dcservicez.a247services.objects;
 
 
 public class Chat_Itm {
-    String msg;
-    long time;
-    int msg_type;
+   public  String msg;
+  public  long time;
+    public int msg_type;
 
 
     public Chat_Itm(String msg, long time, int msg_type) {
