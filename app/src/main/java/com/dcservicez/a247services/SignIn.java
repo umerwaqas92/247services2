@@ -76,6 +76,7 @@ public class SignIn extends AppCompatActivity {
         edt_pass=(EditText)findViewById(R.id.edt_signin_password);
     }
 
+    //coments added
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
