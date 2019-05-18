@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sp_first_activity"
+   >
+
+
+
+
+
+
+    <RelativeLayout
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/relative_sp_first"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@drawable/active_status_sp">
+
+        <ImageButton
+
+            android:id="@+id/menu_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:onClick="menu_profile_fragment"
+            android:scaleType="center"
+            android:src="@drawable/menuwhite" />
+
+
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_height="30dp"
+                android:id="@+id/sp_service_pic"
+                android:layout_width="30dp"
+
+                android:src="@drawable/carpenter" />
+            <TextView
+                android:textColor="@android:color/white"
+                android:id="@+id/sp_service_title"
+                android:textStyle="bold"
+                android:text="Carpenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sp_maain_status_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inactive"
+            android:textSize="25dp"
+            android:textColor="#ffff"
+            android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/txtview_rating"
+        android:layout_below="@id/relative_sp_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rating"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="22dp"
+        android:layout_marginEnd="100dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:textColor="#474e54"/>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linear_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@id/txtview_rating">
+
+        <RatingBar
+            android:id="@+id/sp_ratingbar"
+            style="@style/ImageRatingBar"
+            android:layout_below="@id/linear_name"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginStart="25dp"
+            android:numStars="5"
+            android:rating="3"/>
+
+        <TextView
+            android:id="@+id/sp_rating_txtview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:fontFamily="sans-serif"
+            android:text="4"
+            android:textColor="#ed8a19"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sp_rating_txtview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/5"
+            android:textSize="20dp"
+            android:textColor="#707070"
+            android:layout_marginTop="3dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtview_reviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_rating"
+        android:text="Reviews"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#707070"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <ScrollView
+        android:layout_below="@id/txtview_reviews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_below="@id/txtview_reviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/linear_review_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+
+        android:visibility="gone"
+        android:id="@+id/sp_main_btn"
+        android:layout_below="@id/txtview_reviews"
+        android:layout_centerHorizontal="true"
+        android:text="Arrived"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/txtview_reviews"
+        android:id="@+id/review1_recylerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+
+
+
+
+</RelativeLayout>

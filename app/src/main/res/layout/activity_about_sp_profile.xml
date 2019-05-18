@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".about_sp_profile">
+
+    <RelativeLayout
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/relative_profile_img"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+
+        android:background="@drawable/account_managmentbg"
+        android:orientation="horizontal">
+
+        <Button
+            android:textColor="@android:color/white"
+            android:id="@+id/account_mgt_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:text="Back"
+            android:paddingRight="35dp"
+            android:textSize="12dp"
+            android:drawableLeft="@drawable/backarrow"
+            android:onClick="btnBack_account_mgt"
+            android:background="@android:color/transparent"/>
+
+
+
+    </RelativeLayout>
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+
+        android:id="@+id/sp_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="15dp"
+
+        android:src="@drawable/aizaz_pic"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="1dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="0"
+        app:civ_shadow_color="#8BC34A"
+       android:layout_marginLeft="80dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_acivity_sp_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:text="Umer Waqas"
+
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+
+    <LinearLayout
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:textSize="30dp"
+            android:text="Service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="right"
+            android:id="@+id/txt_acivity_sp_servc"
+            android:textSize="25dp"
+            android:text="Electrition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="30dp"
+            android:text="Experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="right"
+            android:id="@+id/txt_acivity_sp_exp"
+            android:textSize="25dp"
+            android:text="Experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="30dp"
+            android:text="Description"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txt_acivity_sp_desc"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:text="Experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

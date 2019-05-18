@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chat_activity"
+    android:background="#ffff"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/linear_chat_upperbg"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:background="@drawable/account_managmentbg">
+
+        <ImageButton
+
+            android:id="@+id/menu_review1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#ffff"/>
+
+
+        <ImageButton
+            android:id="@+id/menu_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+
+            android:background="@android:color/transparent"
+            android:onClick="menu_profile_fragment"
+            android:scaleType="center"
+            android:src="@drawable/menuwhite" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/sp_image"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/aizaz_pic"
+        app:civ_border_width="1dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#8BC34A"
+        app:civ_shadow_radius="0" />
+
+    <TextView
+        android:id="@+id/chat_txt_name"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/sp_image"
+        android:text="Aaiz khan "
+        android:textColor="#fff"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/relative_viewProfile"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/linear_chat_upperbg">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="2dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/view_profile"
+            android:text="  View Profile"
+            android:textColor="#FF8C00"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linear_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/relative_viewProfile"
+        android:layout_alignParentBottom="true"
+
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingBottom="50dp"
+            app:reverseLayout="true"
+            android:layout_marginBottom="60dp"
+            android:id="@+id/recycler_view_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_weight="0.9"
+            android:id="@+id/edt_type_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+
+            android:background="@drawable/edittext_chat_typetext"
+            android:hint="  Type your Message...."
+            android:padding="15dp"
+            android:textColor="#000"
+            android:textColorHint="#707070"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:onClick="sent_sms"
+            android:scaleType="fitXY"
+            android:layout_weight="0.1"
+            android:id="@+id/btn_sent_Message"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:src="@drawable/sent_message_icon" />
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+
+
+

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "364526531327",
+    "firebase_url": "https://students24by7.firebaseio.com",
+    "project_id": "students24by7",
+    "storage_bucket": "students24by7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364526531327:android:4e71fc757a9e2d1e",
+        "android_client_info": {
+          "package_name": "com.dcservicez.a247services"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364526531327-7iojsrilobj7nrcn6do453fcnup9lqch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dcservicez.a247services",
+            "certificate_hash": "a30da9ffa8c6c89d2aa330a55ace28f0b937adfa"
+          }
+        },
+        {
+          "client_id": "364526531327-pp5id809id4r3h7l0tp9k7322h5eg6ko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpbfTwAf8HMFeuzvXP0y8L28RT-_Z0mm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364526531327-pp5id809id4r3h7l0tp9k7322h5eg6ko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

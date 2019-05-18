@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Change_profile_pic"
+    android:background="#fff">
+
+    <LinearLayout
+        android:id="@+id/linear_account_mgt"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/account_managmentbg"
+        android:orientation="horizontal">
+
+        <Button
+            android:textColor="@android:color/white"
+            android:id="@+id/account_mgt_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:paddingRight="35dp"
+            android:textSize="12dp"
+            android:drawableLeft="@drawable/backarrow"
+            android:layout_marginTop="10dp"
+            android:onClick="btnBack_account_mgt"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Management"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+
+            android:textColor="#fff"/>
+    </LinearLayout>
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/CircularImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/aizaz_pic"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="1dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="0"
+        app:civ_shadow_color="#8BC34A"
+        android:layout_below="@id/linear_account_mgt"
+        android:layout_centerHorizontal="true"
+
+        />
+    <TextView
+        android:id="@+id/change_profileImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CircularImageView"
+        android:text="Change Profile Image"
+        android:textColor="#ed8a1a"
+        android:textSize="25dp"
+        android:onClick="change_profile_image"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentLeft="true"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+
+
+
+</RelativeLayout>

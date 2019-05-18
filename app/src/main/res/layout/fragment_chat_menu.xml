@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical">
+
+    <Button
+        android:onClick="btn_hireRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        android:drawableRight="@drawable/hired"
+        android:text="Hire Request"
+        android:textAllCaps="false"
+        android:textSize="24dp"
+        android:textColor="#26b999"
+
+        />
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/rectangle"
+        />
+    <Button
+        android:onClick="btn_showMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        android:drawableRight="@drawable/earth"
+        android:text="Show Map"
+        android:textAllCaps="false"
+        android:textSize="24dp"
+        android:textColor="#6776c0"
+
+        />
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/rectangle"
+        />
+    <Button
+        android:onClick="btn_leaveConversation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        android:drawableRight="@drawable/cancel"
+        android:text="Leave Conversation"
+        android:textAllCaps="false"
+        android:textSize="24dp"
+        android:textColor="#f0552b"
+
+        />
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/message"
+            android:title="Messages" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/profile"
+                android:title="View Profile" />
+
+        </menu>
+    </item>
+
+    <item android:title="Service Provider">
+        <menu>
+            <item
+                android:id="@+id/status_change"
+
+                android:title="Become Service Provider" />
+
+        </menu>
+    </item>
+
+</menu>

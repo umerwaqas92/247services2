@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item ><layer-list>
+        <item><shape>
+            <solid android:color="#E3E9F7">
+            </solid>
+            <size android:width="40dp" android:height="40dp"></size>
+
+
+            <corners android:topLeftRadius="60dp" android:bottomLeftRadius="60dp" android:bottomRightRadius="60dp" android:topRightRadius="60dp"
+                />
+            <stroke android:color="#000" android:width="1dp">
+
+            </stroke>
+            <padding android:bottom="3dp" android:left="3dp" android:right="10dp" android:top="3dp" />
+        </shape></item>
+        <item ><bitmap android:gravity="center" android:src="@drawable/sentmessage" />
+        </item>
+    </layer-list></item>
+</selector>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Signup_sp"
+    android:background="@drawable/bgpic">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:src="@drawable/logos" />
+
+    <ScrollView
+
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+
+        android:layout_centerInParent="true">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+    <LinearLayout
+
+        android:id="@+id/linear_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="Service"
+            android:textColor="#686767"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spn_services"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/spinner_bg"
+            >
+
+        </Spinner>
+
+    </LinearLayout>
+
+        <EditText
+            android:id="@+id/edt_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Experience"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:background="@drawable/signup_edittext_style"
+            android:textColorHint="#808080"/>
+        <EditText
+            android:id="@+id/edt_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Self Description"
+            android:padding="30dp"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:background="@drawable/signup_edittext_style"
+            android:textColorHint="#808080"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scrollView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/signup_btn"
+        android:fontFamily="sans-serif-black"
+        android:onClick="ok_clicked"
+        android:gravity="center"
+        android:text="Ok"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/btn_sp_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/back"
+        android:layout_below="@id/scrollView"
+        android:layout_marginTop="20dp"/>
+
+
+
+</RelativeLayout>

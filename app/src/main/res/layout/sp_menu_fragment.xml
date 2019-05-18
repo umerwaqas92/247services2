@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/customer_menu_bg">
+
+
+    </LinearLayout>
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/sp_image"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/aizaz_pic"
+        android:layout_alignParentTop="true"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="1dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="0"
+        app:civ_shadow_color="#8BC34A"
+        android:layout_centerHorizontal="true"
+
+        />
+    <LinearLayout
+        android:layout_below="@+id/sp_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aizaz ahmad"
+            android:textColor="#797979"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Account"
+            android:textColor="#f09c3d"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:onClick="btn_manage_account"
+            android:background="@android:color/transparent"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line"
+
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:onClick="btn_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="25dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/message"
+            android:text="  Message"
+            android:textSize="16dp"
+            android:textAllCaps="false"
+            android:textColor="#ababab"/>
+        <Button
+            android:onClick="btn_View_Profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/profile"
+            android:text="  View Profile"
+            android:textSize="16dp"
+            android:textAllCaps="false"
+            android:textColor="#ababab"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
