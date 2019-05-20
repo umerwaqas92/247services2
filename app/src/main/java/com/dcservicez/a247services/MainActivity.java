@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +32,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends Activity {
 
@@ -217,21 +220,32 @@ public class MainActivity extends Activity {
             return false;
         }
 
-        if(mobileNo.getText().toString().isEmpty()){
-            mobileNo.setError("Enter your phone# here ");
-            return false;
-        }
+    if(mobileNo.getText().toString().trim().length()<11){
+        mobileNo.setError("Mobile Number Must be 11 Digits");
+        return false;
 
-        if(email.getText().toString().isEmpty()){
-            email.setError("Enter your email here ");
-            return false;
-        }
+    }
 
-        if(pass.getText().toString().isEmpty()){
-            pass.setError("Enter password here ");
-            return false;
-        }
-        if(!pass.getText().toString().equals(Cpassword.getText().toString())){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+        email.setError("Please enter a Valid E-Mail Address!");
+        return false;
+    }if(email.getText().toString().isEmpty()){
+        email.setError("Enter your email here ");
+
+        return false;
+    }
+
+        if(pass.getText().toString().isEmpty()) {
+        pass.setError("Enter password here ");
+        return false;
+    } if(pass.getText().toString().length()<8){
+        pass.setError("Password must be at least 8 character with one numeric and one Special Character ");
+        return false;
+    }  if (!isValidPassword(pass.getText().toString().trim())){
+        pass.setError("Password must be at least 8 character with one numeric and one Special Character ");
+        return false;
+    }
+ if(!pass.getText().toString().equals(Cpassword.getText().toString())){
             Cpassword.setError("Confirm pass is not matched");
             return false;
         }
@@ -278,5 +292,16 @@ public class MainActivity extends Activity {
 //        Intent intent=new Intent(MainActivity.this,SignIn.class);
 //        startActivity(intent);
         finish();
+    }
+    public static boolean isValidPassword(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+
     }
 }

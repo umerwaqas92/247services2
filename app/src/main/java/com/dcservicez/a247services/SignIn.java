@@ -9,10 +9,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dcservicez.a247services.Extras.View_Mnagae;
 import com.dcservicez.a247services.Notifiers.Dilouges;
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.dcservicez.a247services.debugs.Debug;
@@ -162,4 +164,26 @@ public class SignIn extends AppCompatActivity {
 
 
     }
-}
+    boolean isValid() {
+
+        View_Mnagae viewMnagae = new View_Mnagae(context);
+        viewMnagae.remove_error(edt_email);
+        viewMnagae.remove_error(edt_pass);
+
+        if(edt_email.getText().toString().isEmpty()){
+            edt_email.setError("Enter your Email here ");
+            return false;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(edt_email.getText().toString()).matches()) {
+            edt_email.setError("Please enter a Valid E-Mail Address!");
+            return false;
+        }
+
+        if(edt_pass.getText().toString().isEmpty()) {
+            edt_pass.setError("Enter your Password here ");
+            return false;
+        }
+    return true;
+    }
+
+    }
