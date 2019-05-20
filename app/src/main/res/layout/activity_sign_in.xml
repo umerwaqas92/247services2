@@ -7,20 +7,8 @@
     tools:context=".SignIn"
     android:background="@drawable/purple_gradient">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:padding="20dp"
-        android:src="@drawable/logos" />
 
 
-    <ScrollView
-        android:id="@+id/signin_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        >
 
 
 
@@ -30,9 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerVertical="true"
         android:layout_margin="30dp"
         >
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logos" />
+
 
         <EditText
             android:id="@+id/edt_signin_email"
@@ -60,37 +54,35 @@
             android:background="@drawable/signup_password"
             android:textColorHint="#808080"/>
 
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/signup_btn"
+            android:text="Login"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:onClick="login"
+            android:gravity="center"/>
+
+
 
     </LinearLayout>
 
 
-    </ScrollView>
-
-
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/signin_scroll"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/signup_btn"
-        android:text="Login"
-        android:textSize="18dp"
-        android:onClick="login"
-        android:gravity="center"/>
 
 
     <TextView
         android:id="@+id/tv_noAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_login"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/linear_signIn"
         android:layout_marginBottom="30dp"
         android:text="Don't have an Account ?"
         android:textColor="#3F3B3B"
@@ -100,11 +92,10 @@
         android:id="@+id/btn_signin_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_login"
         android:layout_marginLeft="-11dp"
-        android:layout_marginTop="12dp"
+        android:layout_below="@id/linear_signIn"
         android:layout_toRightOf="@id/tv_noAccount"
-        android:background="@null"
+        android:background="@android:color/transparent"
         android:onClick="redirect_signUp"
         android:text="Sign Up"
         android:textAllCaps="false"
@@ -116,10 +107,9 @@
         android:id="@+id/tv_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_login"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/linear_signIn"
         android:layout_marginLeft="-9dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="14dp"
         android:layout_marginBottom="8dp"
         android:layout_toRightOf="@id/btn_signin_signUp"
         android:text="Now"

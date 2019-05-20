@@ -9,7 +9,6 @@
     tools:context=".Reviw_User">
     <RatingBar
 
-
         android:numStars="5"
         android:id="@+id/review_ratingbar"
         android:layout_width="wrap_content"
@@ -17,12 +16,17 @@
     <EditText
         android:id="@+id/review_edtxt"
         android:hint="Commnets"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
         android:text="Ok"
+        android:layout_marginTop="20dp"
         android:onClick="click_done"
-        android:layout_width="match_parent"
+        android:background="@drawable/signup_btn"
+        android:textSize="16dp"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 

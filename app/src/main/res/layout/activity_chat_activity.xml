@@ -106,7 +106,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/relative_viewProfile"
         android:layout_alignParentBottom="true"
-
+        android:background="@drawable/chatbg"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
@@ -155,7 +155,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
 
-            android:src="@drawable/sent_message_icon" />
+            android:src="@drawable/sendbutton" />
     </LinearLayout>
 
 

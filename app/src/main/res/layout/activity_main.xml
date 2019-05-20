@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/bgpic"
+    android:background="@drawable/purple_gradient"
     >
 
     <ImageView
@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/linearLayout_signUp"
         android:layout_centerHorizontal="true"
-        android:padding="20dp"
         android:layout_marginBottom="-38dp"
         android:src="@drawable/logos" />
 
@@ -40,11 +39,12 @@
         android:orientation="vertical">
 
         <EditText
-            android:maxLength="32"
+
             android:id="@+id/edt_fullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Full Name"
+            android:maxLength="32"
             android:padding="10dp"
             android:textAlignment="center"
             android:textSize="16dp"
@@ -125,18 +125,39 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spn_gender"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="10dp"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/spinner_bg"
+                android:padding="6dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/spinner_two"
+                android:orientation="horizontal">
 
-                >
+                <Spinner
+                    android:id="@+id/spn_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:spinnerMode="dropdown" />
 
-            </Spinner>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/spinner" />
+
+            </RelativeLayout>
+
+
 
 
 
@@ -221,6 +242,7 @@
         android:background="@drawable/signup_btn"
         android:fontFamily="sans-serif-black"
         android:onClick="SignUp"
+        android:textColor="#fff"
         android:gravity="center"
         android:text=" Sign Up" />
 
