@@ -325,6 +325,12 @@ public class SP_Main_Acitvity extends AppCompatActivity
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(false);
+    }
+
     public void update_location(Location location){
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Users");

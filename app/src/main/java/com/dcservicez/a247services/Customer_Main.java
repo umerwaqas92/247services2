@@ -283,8 +283,15 @@ public class Customer_Main extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+//        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(false);
+    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

@@ -141,6 +141,8 @@ public class SignIn extends AppCompatActivity {
 
                     }
 
+                    FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
+
 
                 }else {
                     new Debug(context).print("Login not success");
