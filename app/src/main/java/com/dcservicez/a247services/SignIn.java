@@ -139,9 +139,11 @@ public class SignIn extends AppCompatActivity {
                         startActivity(new Intent(context,Customer_Main.class));
                         finish();
 
+                    }finally {
+
+                        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
                     }
 
-                    FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
 
 
                 }else {
