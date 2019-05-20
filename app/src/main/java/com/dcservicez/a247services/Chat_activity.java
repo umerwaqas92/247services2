@@ -54,11 +54,6 @@ public class Chat_activity extends AppCompatActivity {
             context=this;
             id=getIntent().getExtras().getString("user_id");
 
-//            chat_itms.add(new Chat_Itm("helloo",5454,0));
-//            chat_itms.add(new Chat_Itm("??",5454,0));
-//            chat_itms.add(new Chat_Itm("yes",5454,1));
-
-
 
             check_task_status();
 
@@ -194,8 +189,8 @@ public class Chat_activity extends AppCompatActivity {
 
         public void  menu_profile_fragment(final View view){
             AlertDialog alertDialog=new AlertDialog.Builder(this)
-                    .setTitle("Hireing for task")
-                    .setMessage("Are you sure want to hire this person for task?")
+                    .setTitle("Hiring for task")
+                    .setMessage("Are you sure to hire this person for task?")
                     .setNegativeButton("No",null)
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -247,8 +242,8 @@ public class Chat_activity extends AppCompatActivity {
 
                     if(status==6){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
-                                .setMessage("Task Complition")
-                                .setTitle("is your service provider done his jobe ?")
+                                .setMessage("Task Completion")
+                                .setTitle("Is your Service Provider done his job?")
                                 .setCancelable(false)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
@@ -264,7 +259,7 @@ public class Chat_activity extends AppCompatActivity {
                     if(status==4){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
                                 .setMessage("Arrived")
-                                .setTitle("is your service provider is arrived?")
+                                .setTitle("Is your Service Provider is arrived?")
                                 .setCancelable(false)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
@@ -278,8 +273,8 @@ public class Chat_activity extends AppCompatActivity {
                     }
                     if(status==1){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
-                                .setMessage("Your assigned task is accpted")
-                                .setTitle("Accpted")
+                                .setMessage("Your assigned task is accepted")
+                                .setTitle("Accepted")
                                 .setCancelable(false)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override

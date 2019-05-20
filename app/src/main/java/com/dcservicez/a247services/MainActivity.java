@@ -124,7 +124,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public void register_srvc(final boolean isService,final View view) {
+    public void register_srvc(boolean isService,final View view) {
 
 
         final AlertDialog builder=new ProgressDialog.Builder(context)
@@ -136,86 +136,64 @@ public class MainActivity extends Activity {
 
 
 
+        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
-       final String key =  email.getText().toString().replace(".", ",");
-        FirebaseDatabase.getInstance().getReference("Users").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(!dataSnapshot.exists()){
-                    //valid Email
+        if(isService) {
+            builder.setMessage("Registration as service provider");
+            DatabaseReference ref=firebaseDatabase.getRef();
+            String key =  email.getText().toString().replace(".", ",");
 
-                    DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference("Users");
-                    if(isService) {
-                        builder.setMessage("Registration as service provider");
-                        DatabaseReference ref=firebaseDatabase.getRef();
-
-                        ref.child(key).child("fullname").setValue(fullName.getText().toString());
-                        ref.child(key).child("mobile_no").setValue(mobileNo.getText().toString());
+            ref.child(key).child("fullname").setValue(fullName.getText().toString());
+            ref.child(key).child("mobile_no").setValue(mobileNo.getText().toString());
 //            ref.child(key).child("Email").setValue(email.getText().toString());
-                        ref.child(key).child("password").setValue(pass.getText().toString());
-                        ref.child(key).child("profile_url").setValue("https://firebasestorage.googleapis.com/v0/b/students24by7.appspot.com/o/aizaz_pic.jpg?alt=media&token=8e1a7e81-0dd1-42d2-bfde-6aed919b9648");
-                        ref.child(key).child("service").child("title").setValue(srvc);
-                        ref.child(key).child("service").child("service_des").setValue(srvc_des);
-                        ref.child(key).child("service").child("active").setValue(true);
+            ref.child(key).child("password").setValue(pass.getText().toString());
+            ref.child(key).child("profile_url").setValue("https://firebasestorage.googleapis.com/v0/b/students24by7.appspot.com/o/aizaz_pic.jpg?alt=media&token=8e1a7e81-0dd1-42d2-bfde-6aed919b9648");
+            ref.child(key).child("service").child("title").setValue(srvc);
+            ref.child(key).child("service").child("service_des").setValue(srvc_des);
+            ref.child(key).child("service").child("active").setValue(true);
 
-                        ref.child(key).child("service").child("service_exp").setValue(srvc_exp).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                view.setEnabled(false);
-                                builder.hide();
-
-
-                                dilouges.complition_dilouge("Registration is success", "You have completed registration as servive provider", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        startActivity(new Intent(context,SignIn.class));
-                                        ((Activity)context).finish();
-                                    }
-                                }).show();
-                            }
-                        });
-                    }else {
-                        builder.setMessage("Registration as service user");
+            ref.child(key).child("service").child("service_exp").setValue(srvc_exp).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    view.setEnabled(false);
+                    builder.hide();
 
 
-                        firebaseDatabase.child(key).child("fullname").setValue(fullName.getText().toString());
-                        firebaseDatabase.child(key).child("mobile_no").setValue(mobileNo.getText().toString());
-                        firebaseDatabase.child(key).child("profile_url").setValue("https://firebasestorage.googleapis.com/v0/b/students24by7.appspot.com/o/aizaz_pic.jpg?alt=media&token=8e1a7e81-0dd1-42d2-bfde-6aed919b9648");
+                    dilouges.complition_dilouge("Registration is success", "You have completed registration as servive provider", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(context,SignIn.class));
+                            ((Activity)context).finish();
+                        }
+                    }).show();
+                }
+            });
+        }else {
+            builder.setMessage("Registration as service user");
+
+            String key =  email.getText().toString().replace(".", ","); // firebaseDatabase.push().getKey();
+            firebaseDatabase.child(key).child("fullname").setValue(fullName.getText().toString());
+            firebaseDatabase.child(key).child("mobile_no").setValue(mobileNo.getText().toString());
+            firebaseDatabase.child(key).child("profile_url").setValue("https://firebasestorage.googleapis.com/v0/b/students24by7.appspot.com/o/aizaz_pic.jpg?alt=media&token=8e1a7e81-0dd1-42d2-bfde-6aed919b9648");
 
 //            firebaseDatabase.child(key).child("Email").setValue(email.getText().toString());
-                        firebaseDatabase.child(key).child("password").setValue(pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                view.setEnabled(false);
-                                builder.hide();
-
-                                dilouges.complition_dilouge("Registration is success", "You have completed registration as service user", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        startActivity(new Intent(context,SignIn.class));
-                                        ((Activity)context).finish();
-                                    }
-                                }).show();
-
-                            }
-                        });
-                    }
-
-                }else{
-                    ///not valid Email Adress
+            firebaseDatabase.child(key).child("password").setValue(pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    view.setEnabled(false);
                     builder.hide();
-                    view.setEnabled(true);
-                    Toast.makeText(context,"Not a Valid Email Adress",Toast.LENGTH_SHORT).show();
+
+                    dilouges.complition_dilouge("Registration is success", "You have completed registration as service user", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(context,SignIn.class));
+                            ((Activity)context).finish();
+                        }
+                    }).show();
+
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
+            });
+        }
 
 
 
@@ -241,16 +219,6 @@ public class MainActivity extends Activity {
 
         if(mobileNo.getText().toString().isEmpty()){
             mobileNo.setError("Enter your phone# here ");
-            return false;
-        }
-
-        if(mobileNo.getText().toString().length()!=11){
-            mobileNo.setError("phone#  must be 11 digits ");
-            return false;
-        }
-
-        if(mobileNo.getText().toString().startsWith("03")){
-            mobileNo.setError("phone # must start with 03");
             return false;
         }
 

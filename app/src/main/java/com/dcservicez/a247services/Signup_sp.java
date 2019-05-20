@@ -67,7 +67,7 @@ public class Signup_sp extends AppCompatActivity {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
                 spinner.setSelection(0);
-               debug.print("size of services "+services_str.length);
+
 
             }
 
@@ -99,5 +99,10 @@ public class Signup_sp extends AppCompatActivity {
         edt_exp=(EditText)findViewById(R.id.edt_experience);
         edt_desc=(EditText)findViewById(R.id.edt_description);
 
+    }
+
+    public void sp_back(View view) {
+        Intent spIntent=new Intent(Signup_sp.this,MainActivity.class);
+        startActivity(spIntent);
     }
 }
