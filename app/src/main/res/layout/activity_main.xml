@@ -40,6 +40,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:maxLength="32"
             android:id="@+id/edt_fullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,6 +53,7 @@
             android:textColorHint="#808080"/>
 
         <EditText
+            android:maxLength="11"
             android:id="@+id/edt_mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

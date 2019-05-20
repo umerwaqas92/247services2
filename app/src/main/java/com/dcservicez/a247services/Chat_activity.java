@@ -23,6 +23,7 @@ import com.dcservicez.a247services.Adopters.Chat_Adopter;
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.dcservicez.a247services.objects.Chat_Itm;
 import com.dcservicez.a247services.objects.Conversation2;
+import com.dcservicez.a247services.objects.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -213,16 +214,7 @@ public class Chat_activity extends AppCompatActivity {
 
 
 
-        class Task {
-            public long time=System.currentTimeMillis();
-            public  String id=prefs.email();
-            public   int status=0;
-//0 new 1 accpeted 2 rejected 3 arrived 4 completed
 
-            public Task(String id) {
-                this.id = id;
-            }
-        }
 
         public void check_task_status() {
             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").addChildEventListener(new ChildEventListener() {
