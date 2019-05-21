@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:gravity="center"
     android:id="@+id/service_item_linerlayout"
+    android:background="@drawable/select_service1"
     android:orientation="vertical"
     android:layout_height="250dp">
 
