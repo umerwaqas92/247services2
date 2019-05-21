@@ -58,11 +58,17 @@ public class Services_Adopter extends  RecyclerView.Adapter<Services_Adopter.Vie
 
 
         if(service.getColor()==1){
-            holder.linearLayout.setBackgroundColor(Color.parseColor("#ff707070"));
-            holder.title.setTextColor(Color.parseColor("#fff1f5fe"));
-        }else{
-            holder.title.setTextColor(Color.parseColor("#ff707070"));
-            holder.linearLayout.setBackgroundColor(Color.parseColor("#fff1f5fe"));
+            holder.linearLayout.setBackgroundResource(R.drawable.select_service1);
+//            holder.title.setTextColor(Color.parseColor("#fff1f5fe"));
+        }else if(service.getColor()==2){
+            holder.linearLayout.setBackgroundResource(R.drawable.select_service2);
+//            holder.linearLayout.setBackgroundColor(Color.parseColor("#fff1f5fe"));
+        }else if(service.getColor()==3){
+            holder.linearLayout.setBackgroundResource(R.drawable.select_service3);
+//            holder.linearLayout.setBackgroundColor(Color.parseColor("#fff1f5fe"));
+        }else if(service.getColor()==4){
+            holder.linearLayout.setBackgroundResource(R.drawable.select_service_4);
+//            holder.linearLayout.setBackgroundColor(Color.parseColor("#fff1f5fe"));
         }
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
