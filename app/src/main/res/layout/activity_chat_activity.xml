@@ -15,18 +15,6 @@
         android:orientation="vertical"
         android:background="@drawable/account_managmentbg">
 
-        <ImageButton
-
-            android:id="@+id/menu_review1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffff"/>
-
 
         <ImageButton
             android:id="@+id/menu_review"
@@ -36,7 +24,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-
             android:background="@android:color/transparent"
             android:onClick="menu_profile_fragment"
             android:scaleType="center"
@@ -93,10 +80,10 @@
             android:textAllCaps="false"
             android:textStyle="bold"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/view_profile"
             android:text="  View Profile"
+            android:drawableLeft="@drawable/view_profile"
             android:textColor="#FF8C00"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
     </RelativeLayout>
 
@@ -115,7 +102,9 @@
             android:layout_marginBottom="60dp"
             android:id="@+id/recycler_view_chat"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 
