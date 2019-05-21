@@ -81,7 +81,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/profile"
+            android:drawableLeft="@drawable/view_profile"
             android:text="  View Profile"
             android:textSize="20dp"
             android:textAllCaps="false"

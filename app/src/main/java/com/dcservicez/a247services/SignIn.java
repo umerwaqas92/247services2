@@ -47,31 +47,7 @@ public class SignIn extends AppCompatActivity {
 
 
         requestForSpecificPermission();
-//
-//        startActivity(new Intent(this, Chat_Conversations.class));
-//        Intent intent=new Intent(context,Reviw_User.class);
-//        intent.putExtra("user_id","demoapp9233311@gmail,com");
-//        startActivity(intent);
-    }
-
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-//    }
-//
-//    @AfterPermissionGranted(3)
-//    public void requestLocationPermission() {
-//        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
-//        if(EasyPermissions.hasPermissions(this, perms)) {
-//            Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            EasyPermissions.requestPermissions(this, "Please grant the location permission", 3, perms);
-//        }
-//    }
-
+  }
 
     void getViews(){
         edt_email=(EditText)findViewById(R.id.edt_signin_email);
@@ -134,13 +110,13 @@ public class SignIn extends AppCompatActivity {
                         new Debug(context).print("Login success");
                         try {
                             prefs.sverc_type(dataSnapshot.child("service").child("title").getValue().toString());
-                            new Debug(context).print("you are sp"+dataSnapshot.child("service").getValue().toString());
+                            //new Debug(context).print("you are sp"+dataSnapshot.child("service").getValue().toString());
                             startActivity(new Intent(context,SP_Main_Acitvity.class));
                             finish();
 
                         } catch (Exception e) {
                             prefs.sverc_type("");
-                            new Debug(context).print("not  sp");
+
                             startActivity(new Intent(context,Customer_Main.class));
                             finish();
 

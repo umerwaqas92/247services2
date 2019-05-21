@@ -253,6 +253,7 @@ public class SP_Main_Acitvity extends AppCompatActivity
                 sp_rating_txtview1.setText(rate+"");
                 RatingBar ratingBar=(RatingBar)findViewById(R.id.sp_ratingbar);
                 ratingBar.setRating(rate);
+                ratingBar.setEnabled(false);
                 Log.i("SP_profile",reviewItems.size()+"got reviews");
                 update_recyler_view(reviewItems);
 
