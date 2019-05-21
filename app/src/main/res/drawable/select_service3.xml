@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item ><layer-list>
+        <item><shape>
+            <size android:width="130dp" android:height="30dp"></size>
+
+            <corners android:radius="10dp" />
+            <padding android:bottom="3dp" android:left="3dp" android:right="10dp" android:top="3dp" />
+        </shape></item>
+        <item ><bitmap  android:src="@drawable/select_service3_pic" />
+        </item>
+    </layer-list></item>
+
+</selector>
