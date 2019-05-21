@@ -135,6 +135,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="25dp"
             android:numStars="5"
+
             android:rating="3"/>
 
         <TextView
@@ -165,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_rating"
         android:text="Reviews"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:textColor="#707070"
         android:textStyle="bold"

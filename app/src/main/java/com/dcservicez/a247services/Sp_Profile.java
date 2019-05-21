@@ -75,7 +75,7 @@ public void abt_click(View view){
         imageView_srvc=(ImageView)findViewById(R.id.sp_service_pic);
         img_profile=(CircularImageView) findViewById(R.id.sp_image);
 
-
+        ratingBar.setEnabled(false);
 
 
 
