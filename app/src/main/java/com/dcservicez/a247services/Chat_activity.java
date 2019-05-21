@@ -46,6 +46,13 @@ public class Chat_activity extends AppCompatActivity {
 
     Prefs prefs;
 
+
+    public void View_profile_his(View view){
+        Intent i=new Intent(this,Sp_Profile.class);
+        i.putExtra("user_id",id);
+        startActivity(i);
+    }
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
