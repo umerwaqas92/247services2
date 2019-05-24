@@ -42,7 +42,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="15dp"
 
-        android:src="@drawable/aizaz_pic"
+        android:src="@drawable/default_pic"
         app:civ_border_color="#EEEEEE"
         app:civ_border_width="1dp"
         app:civ_shadow="true"
@@ -59,10 +59,10 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
-        android:text="Umer Waqas"
+        android:text=""
 
         android:textColor="@android:color/white"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

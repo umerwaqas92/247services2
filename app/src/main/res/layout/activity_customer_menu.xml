@@ -20,7 +20,7 @@
         android:layout_width="140dp"
         android:layout_height="160dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/aizaz_pic"
+        android:src="@drawable/default_pic"
         android:layout_alignParentTop="true"
         app:civ_border_color="#EEEEEE"
         app:civ_border_width="1dp"

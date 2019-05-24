@@ -17,7 +17,7 @@
         android:id="@+id/review1_img"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/default_pic"
         app:civ_border_color="#EEEEEE"
         app:civ_border_width="1dp"
         app:civ_shadow="true"

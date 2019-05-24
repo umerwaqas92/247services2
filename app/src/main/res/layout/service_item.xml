@@ -17,12 +17,12 @@
     android:src="@drawable/light" />
 
     <TextView
-        android:id="@+id/service_item_text"
-        android:padding="10dp"
+     android:id="@+id/service_item_text"
+     android:padding="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
-        android:layout_marginTop="10dp"
+    android:layout_marginTop="10dp"
     android:text="Electrician"
     android:textColor="#f1f5fe"
     android:textSize="18dp"

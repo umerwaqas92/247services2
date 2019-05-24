@@ -187,7 +187,7 @@ public class SP_Main_Acitvity extends AppCompatActivity
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
-                        Log.e("GMAP",location.getLongitude()+"");
+                       // Log.e("GMAP",location.getLongitude()+"");
                         update_location(location);
                         if (location != null) {
                             // Logic to handle location object

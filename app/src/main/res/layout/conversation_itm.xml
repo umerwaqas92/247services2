@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
 
-        android:src="@drawable/aizaz_pic"
+        android:src="@drawable/default_pic"
         app:civ_border_color="#EEEEEE"
         app:civ_border_width="1dp"
         app:civ_shadow="true"

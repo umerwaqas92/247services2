@@ -1,11 +1,13 @@
 package com.dcservicez.a247services;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.dcservicez.a247services.Adopters.Chat_Adopter;
 import com.dcservicez.a247services.Adopters.Conversation_Adoper;
@@ -92,4 +94,9 @@ public class Chat_Conversations extends AppCompatActivity {
     }
 
 
+    public void btnBack_account_mgt(View view) {
+        Intent intent=new Intent(Chat_Conversations.this,SP_Main_Acitvity.class);
+        startActivity(intent);
+        finish();
+    }
 }
