@@ -5,7 +5,7 @@
     android:id="@+id/service_item_linerlayout"
     android:background="@drawable/select_service1"
     android:orientation="vertical"
-    android:layout_height="200dp">
+    android:layout_height="180dp">
 
 
     <ImageView
@@ -13,15 +13,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-
+    android:layout_marginTop="20dp"
     android:src="@drawable/light" />
 
     <TextView
         android:id="@+id/service_item_text"
-        android:padding="20dp"
+        android:padding="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
+        android:layout_marginTop="10dp"
     android:text="Electrician"
     android:textColor="#f1f5fe"
     android:textSize="18dp"

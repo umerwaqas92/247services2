@@ -93,58 +93,61 @@ public class SignIn extends AppCompatActivity {
     public void login(final  View view){
 
         if (isValid()){
-
-            final AlertDialog d= (AlertDialog) dilouges.prograss("Login..","wait..",null);
-            d.show();
-            view.setEnabled(false);
-
-            DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Users");
-            String email =  edt_email.getText().toString().replace(".", ","); // firebaseDatabase.push().getKey();
-            prefs.email(email);
-            databaseReference.child(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    d.hide();
-
-                    if(edt_pass.getText().toString().equals(dataSnapshot.child("password").getValue().toString())){
-                        new Debug(context).print("Login success");
-                        try {
-                            prefs.sverc_type(dataSnapshot.child("service").child("title").getValue().toString());
-                            //new Debug(context).print("you are sp"+dataSnapshot.child("service").getValue().toString());
-                            startActivity(new Intent(context,SP_Main_Acitvity.class));
-                            finish();
-
-                        } catch (Exception e) {
-                            prefs.sverc_type("");
-
-                            startActivity(new Intent(context,Customer_Main.class));
-                            finish();
-
-                        }finally {
-
-                            FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
-                        }
+           try {
 
 
+               final AlertDialog d = (AlertDialog) dilouges.prograss("Login..", "wait..", null);
+               d.show();
+               view.setEnabled(false);
 
-                    }else {
-                        new Debug(context).print("Incorrect Email or Password");
-                        view.setEnabled(true);
+               DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+               String email = edt_email.getText().toString().replace(".", ","); // firebaseDatabase.push().getKey();
+               prefs.email(email);
+               databaseReference.child(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       d.hide();
+
+                       if (edt_pass.getText().toString().equals(dataSnapshot.child("password").getValue().toString())) {
+                           new Debug(context).print("Login success");
+                           try {
+                               prefs.sverc_type(dataSnapshot.child("service").child("title").getValue().toString());
+                               //new Debug(context).print("you are sp"+dataSnapshot.child("service").getValue().toString());
+                               startActivity(new Intent(context, SP_Main_Acitvity.class));
+                               finish();
+
+                           } catch (Exception e) {
+                               prefs.sverc_type("");
+
+                               startActivity(new Intent(context, Customer_Main.class));
+                               finish();
+
+                           } finally {
+
+                               FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
+                           }
 
 
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+                       } else {
+                           new Debug(context).print("Incorrect Email or Password");
+                           view.setEnabled(true);
 
 
+                       }
+                   }
 
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                   }
+               });
+
+
+           }catch (Exception e){
+               Toast.makeText(getApplicationContext(),"Incorrect Email or Password",Toast.LENGTH_LONG).show();
+           }
         }else {
-
+            Toast.makeText(getApplicationContext(),"Incorrect Email or Password",Toast.LENGTH_LONG).show();
         }
 
 

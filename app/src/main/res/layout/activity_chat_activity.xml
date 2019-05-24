@@ -62,7 +62,8 @@
         android:layout_toRightOf="@id/sp_image"
         android:text="Aaiz khan "
         android:textColor="#fff"
-        android:textSize="20dp" />
+        android:textAllCaps="false"
+        android:textSize="15dp" />
 
     <RelativeLayout
         android:id="@+id/relative_viewProfile"
@@ -126,7 +127,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
 
             android:background="@drawable/edittext_chat_typetext"
             android:hint="  Type your Message...."
@@ -138,7 +139,6 @@
         <ImageView
             android:onClick="sent_sms"
             android:scaleType="fitXY"
-            android:layout_weight="0.1"
             android:id="@+id/btn_sent_Message"
             android:layout_width="50dp"
             android:layout_height="50dp"

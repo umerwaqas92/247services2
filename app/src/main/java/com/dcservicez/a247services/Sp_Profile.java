@@ -182,7 +182,7 @@ public void abt_click(View view){
     }
     public void contact_clicked(View view) {
         String id=getIntent().getExtras().getString("user_id");
-        Intent intent=new Intent(this, Chat_activity.class);
+        Intent intent=new Intent(this,Chat_activity.class);
         intent.putExtra("user_id",id);
         startActivity(intent);
     }

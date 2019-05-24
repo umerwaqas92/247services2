@@ -232,7 +232,7 @@ public class Chat_activity extends AppCompatActivity {
                     if(status==8){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
                                 .setMessage("Rate the user")
-                                .setTitle("How was the service")
+                                .setTitle("How was the service ?")
                                 .setCancelable(false)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override

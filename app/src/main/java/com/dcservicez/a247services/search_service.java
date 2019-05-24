@@ -144,9 +144,11 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Log.i("srarch_activity",marker.getTitle());
+                Log.e("go sp","show");
                 Intent i=new Intent(search_service.this,Sp_Profile.class);
                 i.putExtra("user_id",marker.getTitle());
                 startActivity(i);

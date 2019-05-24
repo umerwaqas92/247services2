@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
     }
 
     void fill_genders(){
-        String []genders_data={"Male","Female","Other"};
+        String []genders_data={"Not to Say","Male","Female"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 context, R.layout.spinner_item, genders_data);
         spinner_gndr.setAdapter(adapter);
@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(MainActivity.this,chategories.get(position),Toast.LENGTH_SHORT).show();
-                debug.print("selected");
+
             }
 
             @Override

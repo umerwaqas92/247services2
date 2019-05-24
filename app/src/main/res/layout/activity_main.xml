@@ -258,21 +258,6 @@
 
 
 
-    <Button
-        android:id="@+id/register_btn"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
-        android:onClick="register_click"
-        android:text="Register"
-        android:layout_alignParentBottom="true"/>
-    <Spinner
-
-        android:id="@+id/planets_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-        />
 
 
 </RelativeLayout>

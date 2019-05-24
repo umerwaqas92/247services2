@@ -38,14 +38,14 @@
 
     </LinearLayout>
     <TextView
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Select the Required Services"
         android:textColor="#f1a940"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -54,7 +54,6 @@
         android:paddingTop="0dp"
         android:paddingBottom="10dp"
         android:background="#fff"
-
         android:id="@+id/service_select_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
