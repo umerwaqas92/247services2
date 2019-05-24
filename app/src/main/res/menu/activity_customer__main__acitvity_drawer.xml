@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/message_two"
+            android:icon="@drawable/message_two_xml"
             android:title="Messages" />
 
 
@@ -16,7 +16,7 @@
         <menu>
             <item
                 android:id="@+id/nav_profile"
-                android:icon="@drawable/view_profile"
+                android:icon="@drawable/profile11_xml"
                 android:title="View Profile" />
 
         </menu>
