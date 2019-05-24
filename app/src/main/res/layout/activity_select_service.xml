@@ -31,7 +31,7 @@
             android:drawableRight="@drawable/search_icon_xml"
             android:hint="Search"
             android:textColorHint="#fff"
-            android:background="#7689F3"
+            android:background="@drawable/serach_bar_bg"
             android:padding="20dp"
             android:textColor="#fff"
             android:textSize="24dp" />
