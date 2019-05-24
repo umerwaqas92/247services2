@@ -82,7 +82,7 @@
             android:textStyle="bold"
             android:background="@android:color/transparent"
             android:text="  View Profile"
-            android:drawableLeft="@drawable/view_profile"
+            android:drawableLeft="@drawable/profile1_xml"
             android:textColor="#FF8C00"
             android:textSize="14dp" />
 
