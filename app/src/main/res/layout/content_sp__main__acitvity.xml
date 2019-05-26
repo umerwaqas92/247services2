@@ -193,7 +193,9 @@
         android:layout_below="@id/txtview_reviews"
         android:id="@+id/review1_recylerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 
 
