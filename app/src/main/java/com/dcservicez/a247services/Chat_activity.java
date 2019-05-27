@@ -78,7 +78,7 @@ public class Chat_activity extends AppCompatActivity {
                public void onClick(View v) {
                    Intent intent=new Intent(Chat_activity.this,Select_service.class);
                    startActivity(intent);
-                   
+
                    finish();
                }
 
