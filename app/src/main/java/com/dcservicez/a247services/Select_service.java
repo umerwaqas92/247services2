@@ -1,9 +1,12 @@
 package com.dcservicez.a247services;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,8 +15,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
 import com.dcservicez.a247services.Adopters.Services_Adopter;
 import com.dcservicez.a247services.objects.Service;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +37,7 @@ public class Select_service extends AppCompatActivity {
 
     EditText edt_search;
     Services_Adopter adopter;
-
+    ImageButton btn_menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +122,5 @@ public class Select_service extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void btn_menu(View view) {
 
-    }
 }

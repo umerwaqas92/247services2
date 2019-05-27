@@ -8,6 +8,7 @@
     android:background="#ffff"
     android:focusableInTouchMode="true">
 
+
     <LinearLayout
         android:id="@+id/linear_chat_upperbg"
         android:layout_width="match_parent"
@@ -98,6 +99,8 @@
         android:background="@drawable/chatbg"
         android:orientation="vertical">
 
+
+
         <android.support.v7.widget.RecyclerView
             android:paddingBottom="50dp"
             app:reverseLayout="true"
@@ -147,9 +150,22 @@
 
             android:src="@drawable/sendbutton" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/chat_menu_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.dcservicez.a247services.Fragment_chat_menu"/>
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>
+
 
 
 

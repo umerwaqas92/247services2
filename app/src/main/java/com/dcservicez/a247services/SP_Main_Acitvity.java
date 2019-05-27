@@ -197,7 +197,6 @@ public class SP_Main_Acitvity extends AppCompatActivity
 
 
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 

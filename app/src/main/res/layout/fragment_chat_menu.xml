@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="#fff">
     <Button
+        android:id="@+id/btn_hire"
         android:onClick="btn_hireRequest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:background="@android:color/transparent"
-        android:drawableRight="@drawable/hired"
+        android:drawableRight="@drawable/hired_xml"
         android:text="Hire Request"
         android:textAllCaps="false"
-        android:textSize="24dp"
+        android:padding="5dp"
+        android:textSize="20dp"
         android:textColor="#26b999"
 
         />
     <ImageView
         android:layout_width="230dp"
+        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/rectangle"
         />
     <Button
+        android:id="@+id/btn_show_map"
         android:onClick="btn_showMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
         android:background="@android:color/transparent"
-        android:drawableRight="@drawable/earth"
+        android:drawableRight="@drawable/earth_xml"
         android:text="Show Map"
         android:textAllCaps="false"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textColor="#6776c0"
 
         />
@@ -40,20 +51,24 @@
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:src="@drawable/rectangle"
         />
     <Button
+        android:id="@+id/btn_leave_conversation"
         android:onClick="btn_leaveConversation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableRight="@drawable/cancel"
+        android:drawableRight="@drawable/cancel_xml"
         android:text="Leave Conversation"
+        android:padding="5dp"
         android:textAllCaps="false"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textColor="#f0552b"
 
         />
+    </LinearLayout>
 
 </LinearLayout>

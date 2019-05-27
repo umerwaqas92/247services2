@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -46,11 +49,16 @@ public class Chat_activity extends AppCompatActivity {
 
     Prefs prefs;
 
+    LinearLayout chat_menu_fragment;
+
+    Button btn_hire,btn_show_map,btn_leave_conersation;
+    boolean show_fragment=false;
 
     public void View_profile_his(View view){
         Intent i=new Intent(this,Sp_Profile.class);
         i.putExtra("user_id",id);
         startActivity(i);
+        finish();
     }
 
         @Override
@@ -61,8 +69,43 @@ public class Chat_activity extends AppCompatActivity {
             context=this;
             id=getIntent().getExtras().getString("user_id");
 
-
+           chat_menu_fragment=(LinearLayout)findViewById(R.id.chat_menu_fragment);
             check_task_status();
+
+           btn_leave_conersation=(Button)findViewById(R.id.btn_leave_conversation);
+           btn_leave_conersation.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent intent=new Intent(Chat_activity.this,Select_service.class);
+                   startActivity(intent);
+                   
+                   finish();
+               }
+
+           });
+
+            btn_show_map=(Button)findViewById(R.id.btn_show_map);
+            btn_show_map.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                  Intent mapIntent=new Intent(Chat_activity.this,search_service.class);
+                    startActivity(mapIntent);
+                    finish();
+
+                }
+            });
+
+
+
+            btn_hire=(Button)findViewById(R.id.btn_hire);
+            btn_hire.setOnClickListener(new View.OnClickListener() {          //button Hire Request
+                @Override
+                public void onClick(View v) {
+                    fun_hire();
+                }
+            });
+
+
 
             final Chat_Adopter adopter=new Chat_Adopter(chat_itms,this);
             final RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recycler_view_chat);
@@ -194,7 +237,12 @@ public class Chat_activity extends AppCompatActivity {
 
         }
 
-        public void  menu_profile_fragment(final View view){
+        public void  menu_profile_fragment(final View view) {
+            chat_menu_fragment.setVisibility(View.VISIBLE);
+            show_fragment = true;
+            return;
+        }
+        public void fun_hire() {
             AlertDialog alertDialog=new AlertDialog.Builder(this)
                     .setTitle("Hiring for task")
                     .setMessage("Are you sure to hire this person for task?")
@@ -212,8 +260,8 @@ public class Chat_activity extends AppCompatActivity {
                     }).create();
 
             alertDialog.show();
-        }
 
+        }
 
 
 
@@ -312,11 +360,19 @@ public class Chat_activity extends AppCompatActivity {
             });
         }
 
+    @Override
+    public void onBackPressed() {
+        if (show_fragment==true){
+            chat_menu_fragment.setVisibility(View.GONE);
+            show_fragment=false;
+        }else if (show_fragment==false){
+             super.onBackPressed();
 
 
 
-
+        }
     }
+}
 
 
 

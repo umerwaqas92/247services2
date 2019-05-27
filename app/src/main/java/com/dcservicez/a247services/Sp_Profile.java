@@ -185,11 +185,15 @@ public void abt_click(View view){
         Intent intent=new Intent(this,Chat_activity.class);
         intent.putExtra("user_id",id);
         startActivity(intent);
+        finishActivity();
+    }
+
+    private void finishActivity() {
+    finish();
     }
 
 
-
-public class Adopter extends RecyclerView.Adapter<ViewHolder>{
+    public class Adopter extends RecyclerView.Adapter<ViewHolder>{
         ArrayList<Review_item>review_items;
         Context context;
 

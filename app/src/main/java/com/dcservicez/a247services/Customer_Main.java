@@ -27,7 +27,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -67,7 +69,7 @@ public class Customer_Main extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer__main);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+          DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -78,6 +80,7 @@ public class Customer_Main extends AppCompatActivity
         context=this;
         recyclerView=(RecyclerView)findViewById(R.id.service_select_recyclerView);
         edt_search=(EditText)findViewById(R.id.select_service_searrch_edt);
+
 
 
 //        check_task_status();
@@ -303,15 +306,7 @@ public class Customer_Main extends AppCompatActivity
             startActivity(new Intent(this,Change_profile_pic.class));
         } else if (id == R.id.nav_home) {
 
-            startActivity(new Intent(this,Chat_Conversations.class));
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            startActivity(new Intent(this, Chat_Conversations.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

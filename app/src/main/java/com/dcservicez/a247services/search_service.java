@@ -152,6 +152,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                 Intent i=new Intent(search_service.this,Sp_Profile.class);
                 i.putExtra("user_id",marker.getTitle());
                 startActivity(i);
+
                 return false;
             }
         });
