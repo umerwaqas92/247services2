@@ -54,9 +54,10 @@ TextView sp_rating_txtview1;
 
 
 public void abt_click(View view){
-    Intent i=new Intent(this,about_sp_profile.class);
+    Intent i=new Intent(getBaseContext(),about_sp_profile.class);
     i.putExtra("user_id",getIntent().getExtras().getString("user_id"));
     startActivity(i);
+
 }
 
     @Override
@@ -185,13 +186,9 @@ public void abt_click(View view){
         Intent intent=new Intent(this,Chat_activity.class);
         intent.putExtra("user_id",id);
         startActivity(intent);
-        finishActivity();
-    }
+        finish();
 
-    private void finishActivity() {
-    finish();
     }
-
 
     public class Adopter extends RecyclerView.Adapter<ViewHolder>{
         ArrayList<Review_item>review_items;
@@ -200,6 +197,7 @@ public void abt_click(View view){
     public Adopter(ArrayList<Review_item> review_items, Context context) {
         this.review_items = review_items;
         this.context = context;
+
     }
 
 

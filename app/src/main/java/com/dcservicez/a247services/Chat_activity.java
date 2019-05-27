@@ -41,7 +41,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Timer;
 
-public class Chat_activity extends AppCompatActivity {
+public class Chat_activity extends AppCompatActivity implements View.OnClickListener {
 
     final ArrayList<Chat_Itm> chat_itms=new ArrayList<>();
     String id="vovokhan@gmail,com";
@@ -73,37 +73,12 @@ public class Chat_activity extends AppCompatActivity {
             check_task_status();
 
            btn_leave_conersation=(Button)findViewById(R.id.btn_leave_conversation);
-           btn_leave_conersation.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   Intent intent=new Intent(Chat_activity.this,Select_service.class);
-                   startActivity(intent);
+           btn_show_map=(Button)findViewById(R.id.btn_show_map);
+           btn_hire=(Button)findViewById(R.id.btn_hire);
 
-                   finish();
-               }
-
-           });
-
-            btn_show_map=(Button)findViewById(R.id.btn_show_map);
-            btn_show_map.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                  Intent mapIntent=new Intent(Chat_activity.this,search_service.class);
-                    startActivity(mapIntent);
-                    finish();
-
-                }
-            });
-
-
-
-            btn_hire=(Button)findViewById(R.id.btn_hire);
-            btn_hire.setOnClickListener(new View.OnClickListener() {          //button Hire Request
-                @Override
-                public void onClick(View v) {
-                    fun_hire();
-                }
-            });
+           btn_leave_conersation.setOnClickListener(this);
+           btn_show_map.setOnClickListener(this);
+           btn_hire.setOnClickListener(this);
 
 
 
@@ -371,6 +346,28 @@ public class Chat_activity extends AppCompatActivity {
 
 
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_hire:
+                fun_hire();
+                break;
+            case R.id.btn_show_map:
+                Intent intentMap=new Intent(getBaseContext(),search_service.class);
+                startActivity(intentMap);
+                finish();
+                break;
+            case R.id.btn_leave_conversation:
+                Intent intentleave=new Intent(getBaseContext(),Select_service.class);
+                startActivity(intentleave);
+                finish();
+                break;
+        }
+
+
+
     }
 }
 
