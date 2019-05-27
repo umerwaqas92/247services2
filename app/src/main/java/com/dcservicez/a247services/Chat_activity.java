@@ -58,7 +58,7 @@ public class Chat_activity extends AppCompatActivity {
         Intent i=new Intent(this,Sp_Profile.class);
         i.putExtra("user_id",id);
         startActivity(i);
-        finish();
+
     }
 
         @Override
