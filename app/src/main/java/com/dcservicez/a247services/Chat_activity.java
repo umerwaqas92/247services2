@@ -61,6 +61,15 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
     }
 
+
+    public void btn_showMap(){
+        Intent i=new Intent(this,search_service.class);
+        i.putExtra("user_id",id);
+        startActivity(i);
+
+    }
+
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -355,13 +364,15 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                 fun_hire();
                 break;
             case R.id.btn_show_map:
-                Intent intentMap=new Intent(getBaseContext(),search_service.class);
-                startActivity(intentMap);
-                finish();
+//                Intent intentMap=new Intent(getBaseContext(),search_service.class);
+//                startActivity(intentMap);
+                btn_showMap();
+
+//                finish();
                 break;
             case R.id.btn_leave_conversation:
-                Intent intentleave=new Intent(getBaseContext(),Select_service.class);
-                startActivity(intentleave);
+//                Intent intentleave=new Intent(getBaseContext(),Select_service.class);
+//                startActivity(intentleave);
                 finish();
                 break;
         }

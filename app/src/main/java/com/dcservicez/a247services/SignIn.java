@@ -43,7 +43,7 @@ public class SignIn extends AppCompatActivity {
         dilouges=new Dilouges(context);
         prefs=new Prefs(context);
 
-        edt_email.setText(prefs.email());
+        edt_email.setText(prefs.email().replace(",","."));
 
 
         requestForSpecificPermission();

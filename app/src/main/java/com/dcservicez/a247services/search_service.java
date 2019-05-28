@@ -54,7 +54,9 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
     Prefs prefs;
     String service_type;
     private GoogleApiClient googleApiClient;
+    boolean isSP=false;
 
+    boolean isMapRead=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,72 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
         if(getIntent()!=null){
             service_type=getIntent().getExtras().getString("service_type");
+            if(service_type==null){
+                isSP=true;
+                String id=getIntent().getExtras().getString("user_id");
+                debug.print(id);
+                FirebaseDatabase.getInstance().getReference("Users").child(id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+
+                        final double latitude=Double.parseDouble(dataSnapshot.child("location").child("latitude").getValue().toString());
+                        final double longtidue=Double.parseDouble(dataSnapshot.child("location").child("longitude").getValue().toString());
+                        if(isMapRead){
+                            debug.print(longtidue+"map is ready"+latitude);
+                            Transformation transformation = new RoundedTransformationBuilder()
+                                    .borderColor(Color.parseColor("#6776c0ff"))
+                                    .borderWidthDp(10)
+                                    .cornerRadiusDp(30)
+                                    .oval(false)
+                                    .build();
+
+
+
+
+
+
+
+                            Picasso.get().load(dataSnapshot.child("profile_url").getValue().toString()).resize(110,110).centerCrop().transform(transformation).into(new Target() {
+                                @Override
+                                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                                    BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
+                                  mMap.clear();
+                                    mMap.addMarker(new MarkerOptions().icon(icon).title(dataSnapshot.getKey().toString()).position(new LatLng(latitude,longtidue)));
+
+                                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longtidue), 11));
+                                    Log.e("GMAP", "animate camera");
+                                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                                            .target(new LatLng(latitude, longtidue))      // Sets the center of the map to location user
+                                            .zoom(10)                   // Sets the zoom
+                                            .build();                   // Creates a CameraPosition from the builder
+                                    Log.e("GMAP", "animate pos");
+                                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                                }
+
+                                @Override
+                                public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                                }
+
+                                @Override
+                                public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                                }
+                            });
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+
 
         }
 
@@ -113,6 +181,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        isMapRead=true;
         mMap = googleMap;
         Log.e("GMAP","map ready");
         mMap.getUiSettings().setRotateGesturesEnabled(false);
@@ -147,11 +216,13 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Log.i("srarch_activity",marker.getTitle());
-                Log.e("go sp","show");
-                Intent i=new Intent(search_service.this,Sp_Profile.class);
-                i.putExtra("user_id",marker.getTitle());
-                startActivity(i);
+                if(!isSP) {
+                    Log.i("srarch_activity", marker.getTitle());
+                    Log.e("go sp", "show");
+                    Intent i = new Intent(search_service.this, Sp_Profile.class);
+                    i.putExtra("user_id", marker.getTitle());
+                    startActivity(i);
+                }
 
                 return false;
             }
@@ -163,14 +234,18 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
             @Override
             public void onMyLocationChange(Location l) {
 
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(l.getLatitude(), l.getLongitude()), 11));
-                Log.e("GMAP","animate camera");
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(new LatLng(l.getLatitude(), l.getLongitude()))      // Sets the center of the map to location user
-                        .zoom(13)                   // Sets the zoom
-                        .build();                   // Creates a CameraPosition from the builder
-                Log.e("GMAP","animate pos");
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                if(!isSP) {
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(l.getLatitude(), l.getLongitude()), 11));
+                    Log.e("GMAP", "animate camera");
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(new LatLng(l.getLatitude(), l.getLongitude()))      // Sets the center of the map to location user
+                            .zoom(13)                   // Sets the zoom
+                            .build();                   // Creates a CameraPosition from the builder
+                    Log.e("GMAP", "animate pos");
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                    update_location(l);
+                }
 
 //                debug.print("location is changeds "+location.getLongitude()+","+location.getLatitude());
 
@@ -181,7 +256,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
 //                mMap.addMarker(new MarkerOptions().position(sydney).title(prefs.sverc_type()));
 
-                update_location(l);
+
 
             }
         });
@@ -288,7 +363,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 //});
     }
     public void update_location(Location location){
-        if(prefs.sverc_type().isEmpty()){
+        if(prefs.sverc_type().isEmpty() && !isSP){
             check_service_near_me(location,service_type);
             return;
 

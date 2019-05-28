@@ -1,15 +1,19 @@
 package com.dcservicez.a247services;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,8 +41,12 @@ import android.widget.TextView;
 
 import com.dcservicez.a247services.Adopters.Services_Adopter;
 import com.dcservicez.a247services.Prefs.Prefs;
+import com.dcservicez.a247services.objects.MyLocation;
 import com.dcservicez.a247services.objects.Review_item;
 import com.dcservicez.a247services.objects.Service;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,6 +72,9 @@ public class Customer_Main extends AppCompatActivity
     Prefs prefs;
 
 
+    private FusedLocationProviderClient fusedLocationClient;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +92,7 @@ public class Customer_Main extends AppCompatActivity
         recyclerView=(RecyclerView)findViewById(R.id.service_select_recyclerView);
         edt_search=(EditText)findViewById(R.id.select_service_searrch_edt);
 
-
+        update_location();
 
 //        check_task_status();
 
@@ -289,6 +300,36 @@ public class Customer_Main extends AppCompatActivity
 //        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
     }
 
+
+
+    public void update_location(){
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        // Log.e("GMAP",location.getLongitude()+"");
+
+                        MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
+                        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("location").setValue(myLocation);
+
+                        if (location != null) {
+                            // Logic to handle location object
+                        }
+                    }
+                });
+    }
 
     @Override
     protected void onDestroy() {
