@@ -38,6 +38,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dcservicez.a247services.Adopters.Services_Adopter;
 import com.dcservicez.a247services.Prefs.Prefs;
@@ -71,7 +72,7 @@ public class Customer_Main extends AppCompatActivity
 
     Prefs prefs;
 
-
+    ImageButton user_btn_menu;
     private FusedLocationProviderClient fusedLocationClient;
 
 
@@ -91,10 +92,25 @@ public class Customer_Main extends AppCompatActivity
         context=this;
         recyclerView=(RecyclerView)findViewById(R.id.service_select_recyclerView);
         edt_search=(EditText)findViewById(R.id.select_service_searrch_edt);
+        user_btn_menu=(ImageButton)findViewById(R.id.user_btn_menu);
+
 
         update_location();
 
 //        check_task_status();
+
+
+        user_btn_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Press",Toast.LENGTH_SHORT).show();
+
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.openDrawer(GravityCompat.START);
+
+
+            }
+        });
 
 
 
