@@ -95,8 +95,8 @@ public class Chat_Conversations extends AppCompatActivity {
 
 
     public void btnBack_account_mgt(View view) {
-        Intent intent=new Intent(Chat_Conversations.this,SP_Main_Acitvity.class);
-        startActivity(intent);
+//        Intent intent=new Intent(Chat_Conversations.this,SP_Main_Acitvity.class);
+//        startActivity(intent);
         finish();
     }
 }

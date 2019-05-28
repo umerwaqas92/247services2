@@ -39,6 +39,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dcservicez.a247services.Prefs.Prefs;
+import com.dcservicez.a247services.objects.MyLocation;
 import com.dcservicez.a247services.objects.Review_item;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -116,6 +117,12 @@ public class SP_Main_Acitvity extends AppCompatActivity
                             button.setVisibility(View.GONE);
                             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(8);//accpted
                             FirebaseDatabase.getInstance().getReference("Users").child(dataSnapshot.child("id").getValue().toString()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(8);//accpted
+
+                            ///rate the other user
+                            Intent intent=new Intent(context, Reviw_User.class);
+                            intent.putExtra("user_id",dataSnapshot.child("id").getValue().toString());
+                            intent.putExtra("isSP",false);
+                            startActivity(intent);
 
                         }
                     });}
@@ -334,8 +341,16 @@ public class SP_Main_Acitvity extends AppCompatActivity
     public void update_location(Location location){
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Users");
-        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
-        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Longitude").setValue(location.getLongitude());
+//        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
+//        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Longitude").setValue(location.getLongitude());
+
+
+        MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
+
+//        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
+        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).setValue(myLocation);
+
+        ref.child(prefs.email()).child("location").setValue(myLocation);
 
 
     }

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -57,7 +58,27 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
     public void View_profile_his(View view){
         Intent i=new Intent(this,Sp_Profile.class);
         i.putExtra("user_id",id);
+
+//        i.putExtra("isSP",false);
         startActivity(i);
+
+    }
+
+    public void call_this_person(View view){
+       FirebaseDatabase.getInstance().getReference("Users").child(id).child("mobile_no").addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               Uri number = Uri.parse(dataSnapshot.getValue().toString());
+               Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+               intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(intent);
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+
+           }
+       });
 
     }
 
@@ -102,6 +123,14 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
             recyclerView.setAdapter(adopter);
 
             recyclerView.setLayoutManager(linearLayoutManager);
+
+            if(!prefs.sverc_type().isEmpty()){
+                ///it is customer
+                btn_hire.setVisibility(View.GONE);
+//                ((Button)findViewById(R.id.View_profile_his)).setVisibility(View.GONE);
+
+
+            }
 
 
             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).addChildEventListener(new ChildEventListener() {
@@ -268,6 +297,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                                         FirebaseDatabase.getInstance().getReference("Users").child(dataSnapshot.child("id").getValue().toString()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(10);//accpted
                                         Intent intent=new Intent(context, Reviw_User.class);
                                         intent.putExtra("user_id",dataSnapshot.child("id").getValue().toString());
+                                        intent.putExtra("isSP",true);
                                         startActivity(intent);
                                     }
                                 }).create();

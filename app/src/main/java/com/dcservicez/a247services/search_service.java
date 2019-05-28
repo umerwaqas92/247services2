@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.dcservicez.a247services.debugs.Debug;
+import com.dcservicez.a247services.objects.MyLocation;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -270,10 +271,19 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (final DataSnapshot data:dataSnapshot.getChildren()) {
                     Log.i("Search_Service",data.getKey().toString());
-                    FirebaseDatabase.getInstance().getReference("Users").child(data.getKey().toString()).child("profile_url").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    FirebaseDatabase.getInstance().getReference("Users").child(data.getKey().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+
+
+                            String profile_url=dataSnapshot.child("profile_url").getValue().toString();
+
+                            boolean isActive=Boolean.parseBoolean(dataSnapshot.child("service").child("active").getValue().toString());
+                            if(!isActive){
+                                return;
+                            }
 
                             Log.i("Search_Service",dataSnapshot.getValue().toString());
 
@@ -291,12 +301,18 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
 
 
+                                Log.e("Search_service",profile_url);
+                                Log.e("Search_service",service_type);
+                                Log.e("Search_service",data.getKey().toString());
 
-                                Picasso.get().load(dataSnapshot.getValue().toString()).resize(110,110).centerCrop().transform(transformation).into(new Target() {
+                                if(profile_url!=null)
+                                Picasso.get().load(profile_url).resize(110,110).centerCrop().transform(transformation).into(new Target() {
                                     @Override
                                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                                        BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
-                                        mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("Latitude").getValue().toString()),Float.parseFloat(data.child("Longitude").getValue().toString()))));
+
+                                            mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()),Float.parseFloat(data.child("longitude").getValue().toString()))));
+
 
                                     }
 
@@ -369,8 +385,13 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
         }
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Users");
-        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
-        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Longitude").setValue(location.getLongitude());
+        MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
+
+//        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
+        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).setValue(myLocation);
+
+        ref.child(prefs.email()).child("location").setValue(myLocation);
+//        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Longitude").setValue(location.getLongitude());
 
 
     }

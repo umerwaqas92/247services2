@@ -185,6 +185,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/abt_click"
             android:onClick="abt_click"
             android:textColor="@android:color/white"
             android:background="@drawable/sp_about_btn_back"

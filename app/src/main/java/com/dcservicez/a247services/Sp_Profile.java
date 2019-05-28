@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +18,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.dcservicez.a247services.Adopters.Services_Adopter;
+import com.dcservicez.a247services.Prefs.Prefs;
 import com.dcservicez.a247services.objects.Chat_Itm;
 import com.dcservicez.a247services.objects.Review_item;
 import com.google.firebase.database.DataSnapshot;
@@ -50,9 +53,11 @@ public class Sp_Profile extends AppCompatActivity {
     RatingBar ratingBar;
 TextView sp_rating_txtview1;
 
+Prefs prefs;
+boolean isSP=false;
 
 
-
+    String id;
 public void abt_click(View view){
     Intent i=new Intent(getBaseContext(),about_sp_profile.class);
     i.putExtra("user_id",getIntent().getExtras().getString("user_id"));
@@ -65,8 +70,9 @@ public void abt_click(View view){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sp__profile);
         Intent intent=getIntent();
+        prefs=new Prefs(this);
 
-        String id=intent.getExtras().getString("user_id");
+         id=intent.getExtras().getString("user_id");
         recyclerView=(RecyclerView)findViewById(R.id.review1_recylerView);
         textView_namme=(TextView)findViewById(R.id.sp_name);
         textView_srvc=(TextView)findViewById(R.id.sp_service_title);
@@ -78,6 +84,12 @@ public void abt_click(View view){
 
         ratingBar.setEnabled(false);
 
+        if(prefs.sverc_type().isEmpty()){
+            isSP=false;
+        }else {
+            isSP=true;
+            ((Button)findViewById(R.id.abt_click)).setVisibility(View.GONE);
+        }
 
 
         FirebaseDatabase.getInstance().getReference("Users").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +99,14 @@ public void abt_click(View view){
                 int count=0;
               final   ArrayList<Review_item> reviewItems=new ArrayList<>();
 
-                for (final DataSnapshot review:dataSnapshot.child("service").child("reviews").getChildren()) {
+              DataSnapshot snapshot;
+              if(isSP){
+                  snapshot=dataSnapshot.child("reviews");
+              }else{
+                  snapshot=dataSnapshot.child("service").child("reviews");
+              }
+
+                for (final DataSnapshot review:snapshot.getChildren()) {
 
                     int rate=Integer.parseInt(review.child("rate").getValue().toString());
                     count++;
@@ -125,7 +144,7 @@ public void abt_click(View view){
                 Log.i("SP_profile",reviewItems.size()+"got reviews");
                 update_recyler_view(reviewItems);
 
-
+                if(!isSP)
                 FirebaseDatabase.getInstance().getReference("app_config").child("services").child(dataSnapshot.child("service").child("title").getValue().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
@@ -182,11 +201,28 @@ public void abt_click(View view){
         finish();
     }
     public void contact_clicked(View view) {
-        String id=getIntent().getExtras().getString("user_id");
-        Intent intent=new Intent(this,Chat_activity.class);
-        intent.putExtra("user_id",id);
-        startActivity(intent);
-        finish();
+       if(isSP){
+           FirebaseDatabase.getInstance().getReference("Users").child(id).child("mobile_no").addListenerForSingleValueEvent(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   Uri number = Uri.parse(dataSnapshot.getValue().toString());
+                   Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+                   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                   startActivity(intent);
+               }
+
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+
+               }
+           });
+       }else{
+           String id=getIntent().getExtras().getString("user_id");
+           Intent intent=new Intent(this,Chat_activity.class);
+           intent.putExtra("user_id",id);
+           startActivity(intent);
+           finish();
+       }
 
     }
 

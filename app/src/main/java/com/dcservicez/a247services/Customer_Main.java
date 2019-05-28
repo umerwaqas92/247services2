@@ -317,6 +317,13 @@ public class Customer_Main extends AppCompatActivity
     }
 
 
+    public void menu_profile_fragment(View view){
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.openDrawer(GravityCompat.START);
+
+
+    }
+
 
     public void update_location(){
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);

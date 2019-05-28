@@ -54,7 +54,8 @@
         android:layout_marginTop="5dp"
         android:src="@drawable/rectangle"
         />
-    <Button
+
+        <Button
         android:id="@+id/btn_leave_conversation"
         android:onClick="btn_leaveConversation"
         android:layout_width="match_parent"
@@ -69,6 +70,7 @@
         android:textColor="#f0552b"
 
         />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Reviw_User extends AppCompatActivity {
     Prefs prefs;
     String id;
+    boolean isSP=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,7 @@ public class Reviw_User extends AppCompatActivity {
         prefs=new Prefs(this);
 
         id=getIntent().getExtras().getString("user_id");
+        isSP=getIntent().getExtras().getBoolean("isSP");
     }
 
     class Review{
@@ -36,7 +38,13 @@ public class Reviw_User extends AppCompatActivity {
             int rate=(int)((RatingBar)findViewById(R.id.review_ratingbar)).getRating();
             String review=((EditText)findViewById(R.id.review_edtxt)).getText().toString();
 
-            FirebaseDatabase.getInstance().getReference("Users").child(id).child("service").child("reviews").child(prefs.email()).setValue(new Review(rate,review));
+            if(isSP){
+                FirebaseDatabase.getInstance().getReference("Users").child(id).child("service").child("reviews").child(prefs.email()).setValue(new Review(rate,review));
+            }else{
+                FirebaseDatabase.getInstance().getReference("Users").child(id).child("reviews").child(prefs.email()).setValue(new Review(rate,review));
+
+            }
+
             finish();
         } catch (Exception e) {
             e.printStackTrace();
