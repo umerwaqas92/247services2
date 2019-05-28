@@ -207,17 +207,11 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child("info").setValue(convrs);
             Chat_Itm chatItm=new Chat_Itm(msg,System.currentTimeMillis(),0);
             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child(t+"").setValue(chatItm);
-//        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child(t+"").child("msg_type").setValue(0);
-//        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).child(t+"").child("msg_time").setValue(ServerValue.TIMESTAMP);
-            chatItm=new Chat_Itm(msg,System.currentTimeMillis(),1);
+             chatItm=new Chat_Itm(msg,System.currentTimeMillis(),1);
             FirebaseDatabase.getInstance().getReference("Users").child(id).child("messages").child(prefs.email()).child(t+"").setValue(chatItm);
 
 
 
-
-//        FirebaseDatabase.getInstance().getReference("Users").child(id).child("messages").child(prefs.email()).child(t+"").child("msg").setValue(msg);
-//        FirebaseDatabase.getInstance().getReference("Users").child(id).child("messages").child(prefs.email()).child(t+"").child("msg_type").setValue(1);
-//        FirebaseDatabase.getInstance().getReference("Users").child(id).child("messages").child(prefs.email()).child(t+"").child("msg_time").setValue(ServerValue.TIMESTAMP);
 
 
         }
@@ -377,8 +371,6 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
         }
-
-
 
     }
 }

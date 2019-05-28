@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -126,6 +128,7 @@ public class SignIn extends AppCompatActivity {
 
                                FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("islogin").setValue(true);
                            }
+
 
 
                        } else {

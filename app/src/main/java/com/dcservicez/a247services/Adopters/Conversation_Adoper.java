@@ -27,9 +27,11 @@ public class Conversation_Adoper extends RecyclerView.Adapter<Conversation_Adope
     Context context;
     ArrayList<Conversation> conversations;
 
+
     public Conversation_Adoper(Context context, ArrayList<Conversation> conversations) {
         this.context = context;
         this.conversations = conversations;
+
     }
 
     @Override
@@ -67,6 +69,7 @@ public class Conversation_Adoper extends RecyclerView.Adapter<Conversation_Adope
             public void onClick(View view) {
                 Intent intent=new Intent(context, Chat_activity.class);
                 intent.putExtra("user_id",conversation.getUsr_id());
+
                 context.startActivity(intent);
             }
         });
