@@ -63,9 +63,10 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
 
     public void btn_showMap(){
-        Intent i=new Intent(this,search_service.class);
-        i.putExtra("user_id",id);
-        startActivity(i);
+       // Intent i=new Intent(this,search_service.class);
+       // i.putExtra("user_id",id);
+       // startActivity(i);
+      finish();
 
     }
 
@@ -364,7 +365,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                 fun_hire();
                 break;
             case R.id.btn_show_map:
-//                Intent intentMap=new Intent(getBaseContext(),search_service.class);
+  //              Intent intentMap=new Intent(getBaseContext(),search_service.class);
 //                startActivity(intentMap);
                 btn_showMap();
 

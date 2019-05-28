@@ -105,8 +105,14 @@ public class about_sp_profile extends AppCompatActivity {
     }
 
     public void btnBack_account_mgt(View view) {
-        Intent intent=new Intent(about_sp_profile.this,Sp_Profile.class);
-        startActivity(intent);
-        finish();
+      //  Intent intent=new Intent(about_sp_profile.this,Sp_Profile.class);
+        //startActivity(intent);
+        onBackPressed();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
