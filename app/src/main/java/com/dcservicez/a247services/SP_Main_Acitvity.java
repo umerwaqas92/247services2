@@ -394,7 +394,7 @@ public class SP_Main_Acitvity extends AppCompatActivity
             startActivity(new Intent(this,Chat_Conversations.class));
         } else if (id == R.id.nav_profile) {
             // Handle the camera action
-            startActivity(new Intent(this,Change_profile_pic.class));
+            startActivity(new Intent(this,Profike_Managment.class));
 
 
         }else  if (id == R.id.status_change) {

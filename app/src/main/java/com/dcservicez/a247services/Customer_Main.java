@@ -367,7 +367,7 @@ public class Customer_Main extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             // Handle the camera action
-            startActivity(new Intent(this,Change_profile_pic.class));
+            startActivity(new Intent(this,Profike_Managment.class));
         } else if (id == R.id.nav_home) {
 
             startActivity(new Intent(this, Chat_Conversations.class));

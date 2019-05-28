@@ -13,12 +13,12 @@
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Management">
         <menu>
             <item
                 android:id="@+id/nav_profile"
                 android:icon="@drawable/profile11_xml"
-                android:title="View Profile" />
+                android:title="Profile Management" />
 
         </menu>
     </item>
