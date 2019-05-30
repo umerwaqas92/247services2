@@ -1,5 +1,6 @@
 package com.dcservicez.a247services;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -48,6 +49,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
     String id="vovokhan@gmail,com";
     Context context;
 
+    String id2="aizazkhan";
     Prefs prefs;
 
     LinearLayout chat_menu_fragment;
@@ -84,9 +86,9 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
 
     public void btn_showMap(){
-       // Intent i=new Intent(this,search_service.class);
+      //  Intent i=new Intent(this,search_service.class);
        // i.putExtra("user_id",id);
-       // startActivity(i);
+      //  startActivity(i);
       finish();
 
     }
@@ -98,7 +100,6 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
             setContentView(R.layout.activity_chat_activity);
                     prefs=new Prefs(this);
             context=this;
-            id=getIntent().getExtras().getString("user_id");
 
            chat_menu_fragment=(LinearLayout)findViewById(R.id.chat_menu_fragment);
             check_task_status();
@@ -110,6 +111,8 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
            btn_leave_conersation.setOnClickListener(this);
            btn_show_map.setOnClickListener(this);
            btn_hire.setOnClickListener(this);
+            id=getIntent().getExtras().getString("user_id");
+
 
 
 
@@ -397,12 +400,17 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn_leave_conversation:
                 Intent intentleave=new Intent(getBaseContext(),Select_service.class);
-               startActivity(intentleave);
+                intentleave.putExtra("user",id2);
+                startActivity(intentleave);
+
                 finish();
                 break;
         }
 
     }
+
+
+
 }
 
 

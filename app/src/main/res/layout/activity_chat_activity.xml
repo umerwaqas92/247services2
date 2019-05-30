@@ -74,20 +74,20 @@
 
         <Button
             android:id="@+id/View_profile_his"
-            android:onClick="View_profile_his"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_gravity="center"
-            android:layout_marginStart="178dp"
+            android:layout_marginStart="167dp"
             android:layout_marginTop="2dp"
-            android:textAllCaps="false"
-            android:textStyle="bold"
             android:background="@android:color/transparent"
-            android:text="  View Profile"
             android:drawableLeft="@drawable/profile1_xml"
+            android:onClick="View_profile_his"
+            android:text="  View Profile"
+            android:textAllCaps="false"
             android:textColor="#FF8C00"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
         <Button
 
@@ -100,7 +100,7 @@
             android:layout_marginStart="294dp"
             android:layout_marginTop="2dp"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/profile1_xml"
+            android:drawableLeft="@drawable/telepone_xml"
             android:onClick="call_this_person"
             android:text="Call"
             android:textAllCaps="false"
@@ -183,10 +183,4 @@
 
 
 
-
 </RelativeLayout>
-
-
-
-
-

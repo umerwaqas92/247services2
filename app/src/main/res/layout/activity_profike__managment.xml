@@ -5,50 +5,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/purple_gradient"
     tools:context=".Profike_Managment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:orientation="vertical">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#707070"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Edit Profile"
+
+        android:textColor="#ffff"
+        android:textSize="24dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:layout_marginTop="20dp"
+        android:textSize="16dp"/>
     <EditText
         android:hint="Full name"
         android:id="@+id/profile_manage_name_edt"
         android:layout_width="match_parent"
+        android:padding="8dp"
+        android:background="@drawable/profile_management_edttext_style"
         android:layout_height="wrap_content" />
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Phone no"
+        android:textSize="16dp"/>
     <EditText
         android:hint="Phone#"
         android:id="@+id/profile_manage_phone_edt"
+        android:background="@drawable/profile_management_edttext_style"
+
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Experience"
+        android:textSize="16dp"/>
     <EditText
-        android:hint="Experice"
+        android:hint="Experience"
         android:id="@+id/profile_manage_experince_edt"
+        android:background="@drawable/profile_management_edttext_style"
+         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Description"
+        android:textSize="16dp"/>
     <EditText
-        android:hint="Description"
+        android:hint=" Description"
         android:id="@+id/profile_manage_desc_edt"
         android:layout_width="match_parent"
+        android:background="@drawable/profile_management_edttext_style"
+         android:paddingBottom="30dp"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Password"
+        android:textSize="16dp"/>
     <EditText
         android:hint="Password"
         android:id="@+id/profile_manage_pass_edt"
         android:layout_width="match_parent"
+        android:background="@drawable/profile_management_edttext_style"
+
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
 
     <Button
         android:onClick="change_profile_image"
         android:text="Change Proile Picture"
+        android:background="@drawable/profile_management_edttext_style"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
         android:onClick="done_click"
         android:text="Ok"
+        android:background="@drawable/signup_btn"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:textColor="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>

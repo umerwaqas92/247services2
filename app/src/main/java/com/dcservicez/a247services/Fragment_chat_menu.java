@@ -15,12 +15,12 @@ import com.dcservicez.a247services.R;
 
 public class Fragment_chat_menu extends Fragment {
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_chat_menu, container, false);
-
 
         return view;
     }

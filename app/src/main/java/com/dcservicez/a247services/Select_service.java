@@ -27,6 +27,7 @@ public class Select_service extends AppCompatActivity {
     Context context;
     RecyclerView recyclerView;
 
+    String id="aizaz ahmad";
     EditText edt_search;
     Services_Adopter adopter;
     ImageButton btn_menu;
@@ -38,6 +39,7 @@ public class Select_service extends AppCompatActivity {
         recyclerView=(RecyclerView)findViewById(R.id.service_select_recyclerView);
         edt_search=(EditText)findViewById(R.id.select_service_searrch_edt);
 
+        id=getIntent().getExtras().getString("user");
 
         edt_search.addTextChangedListener(new TextWatcher() {
             @Override

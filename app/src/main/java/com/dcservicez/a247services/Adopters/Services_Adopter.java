@@ -78,6 +78,7 @@ public class Services_Adopter extends  RecyclerView.Adapter<Services_Adopter.Vie
                 i.putExtra("service_type",service.getService());
                 context.startActivity(i);
 
+
 //                Log.i("service24/7_Adopter","select service"+service.getService());
             }
         });

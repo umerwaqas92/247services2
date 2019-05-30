@@ -68,7 +68,8 @@ public class Conversation_Adoper extends RecyclerView.Adapter<Conversation_Adope
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context, Chat_activity.class);
-                intent.putExtra("user_id",conversation.getUsr_id());
+                //intent.putExtra("user_id",conversation.getUsr_id());
+                intent.putExtra("sp_press",conversation.getId());
 
                 context.startActivity(intent);
             }

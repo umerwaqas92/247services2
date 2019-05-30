@@ -169,15 +169,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -223,6 +215,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                     Intent i = new Intent(search_service.this, Sp_Profile.class);
                     i.putExtra("user_id", marker.getTitle());
                     startActivity(i);
+
                 }
 
                 return false;
@@ -246,16 +239,9 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
                     update_location(l);
+
                 }
 
-//                debug.print("location is changeds "+location.getLongitude()+","+location.getLatitude());
-
-//                Location location=getMyLocation();
-//        debug.print("permession is  grandeted");
-//                LatLng sydney = new LatLng(location.getLatitude(),location.getLongitude());
-//                debug.print(prefs.sverc_type());
-
-//                mMap.addMarker(new MarkerOptions().position(sydney).title(prefs.sverc_type()));
 
 
 
@@ -266,10 +252,12 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
     public void check_service_near_me(Location location,final String service_type){
         final DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Users").child("service_provider_location").child(service_type);
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (final DataSnapshot data:dataSnapshot.getChildren()) {
+
                     Log.i("Search_Service",data.getKey().toString());
 
                     FirebaseDatabase.getInstance().getReference("Users").child(data.getKey().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -282,10 +270,14 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
                             boolean isActive=Boolean.parseBoolean(dataSnapshot.child("service").child("active").getValue().toString());
                             if(!isActive){
+
+                                Log.e("GMAP", "Check");
                                 return;
+
                             }
 
                             Log.i("Search_Service",dataSnapshot.getValue().toString());
+
 
 
 
@@ -339,21 +331,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                     });
 
 
-//                    ref.child(data.getKey().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                for (DataSnapshot data2:dataSnapshot.getChildren()) {
-//
-//
-//
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                            }
-//                        });
+
                 }
             }
 
@@ -362,22 +340,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
             }
         });
-
-//        Query chatRoomsQuery = ref.orderByChild("Latitude").e(32.9853067);
-//chatRoomsQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-//    @Override
-//    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//        if(dataSnapshot!=null){
-//            debug.print("found"+dataSnapshot.getKey());
-//        }
-//    }
-//
-//    @Override
-//    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//    }
-//});
-    }
+     }
     public void update_location(Location location){
         if(prefs.sverc_type().isEmpty() && !isSP){
             check_service_near_me(location,service_type);
