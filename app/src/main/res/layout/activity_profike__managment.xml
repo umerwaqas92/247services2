@@ -31,6 +31,7 @@
         android:textStyle="bold|italic" />
 
     <TextView
+        android:id="@+id/txtview_fullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Full Name"
@@ -61,6 +62,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/textView_experience"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -74,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
+        android:id="@+id/textView_Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.google.firebase.database.DataSnapshot;
@@ -13,17 +14,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 public class Profike_Managment extends AppCompatActivity {
     EditText name,phone,pass,exp,desc;
     Prefs prefs;
     boolean isSP=false;
-
+    TextView textView_exp,textView_desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profike__managment);
         prefs=new Prefs(this);
+
+        textView_exp=(TextView)findViewById(R.id.textView_experience);
+        textView_desc=(TextView)findViewById(R.id.textView_Description);
+
         name=(EditText)findViewById(R.id.profile_manage_name_edt);
         phone=(EditText)findViewById(R.id.profile_manage_phone_edt);
         pass=(EditText)findViewById(R.id.profile_manage_pass_edt);
@@ -32,6 +39,8 @@ public class Profike_Managment extends AppCompatActivity {
         if(prefs.sverc_type().isEmpty()){
             //customer
             isSP=false;
+            textView_exp.setVisibility(View.GONE);
+            textView_desc.setVisibility(View.GONE);
             exp.setVisibility(View.GONE);
             desc.setVisibility(View.GONE);
         }else{

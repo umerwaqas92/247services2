@@ -103,8 +103,6 @@ public class Customer_Main extends AppCompatActivity
         user_btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Press",Toast.LENGTH_SHORT).show();
-
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 drawer.openDrawer(GravityCompat.START);
 

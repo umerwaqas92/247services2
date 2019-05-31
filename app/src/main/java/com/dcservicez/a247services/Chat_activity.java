@@ -399,9 +399,10 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 //                finish();
                 break;
             case R.id.btn_leave_conversation:
-                Intent intentleave=new Intent(getBaseContext(),Select_service.class);
-                intentleave.putExtra("user",id2);
-                startActivity(intentleave);
+                //Intent intentleave=new Intent(getBaseContext(),Select_service.class);
+                //intentleave.putExtra("user",id2);
+
+                //startActivity(intentleave);
 
                 finish();
                 break;

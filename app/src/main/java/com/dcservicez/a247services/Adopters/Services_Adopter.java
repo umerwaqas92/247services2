@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dcservicez.a247services.R;
+import com.dcservicez.a247services.Select_service;
 import com.dcservicez.a247services.objects.Service;
 import com.dcservicez.a247services.search_service;
 import com.google.firebase.database.DataSnapshot;
@@ -77,7 +78,6 @@ public class Services_Adopter extends  RecyclerView.Adapter<Services_Adopter.Vie
                 Intent i=new Intent(context, search_service.class);
                 i.putExtra("service_type",service.getService());
                 context.startActivity(i);
-
 
 //                Log.i("service24/7_Adopter","select service"+service.getService());
             }

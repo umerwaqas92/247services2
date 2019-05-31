@@ -186,23 +186,6 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                 mMap.setMyLocationEnabled(true);
         Log.e("GMAP","enabled");
 
-//                Location l=getMyLocation();
-//            Location l=null;
-//                if(l==null){
-//                    l = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-//
-//                    Log.e("GMAP","null");
-////                    return;
-//                }
-//
-//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(l.getLatitude(), l.getLongitude()), 11));
-//        Log.e("GMAP","animate camera");
-//        CameraPosition cameraPosition = new CameraPosition.Builder()
-//                .target(new LatLng(l.getLatitude(), l.getLongitude()))      // Sets the center of the map to location user
-//                .zoom(13)                   // Sets the zoom
-//                .build();                   // Creates a CameraPosition from the builder
-//        Log.e("GMAP","animate pos");
-//        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
