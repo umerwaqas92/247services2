@@ -414,6 +414,3 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
 }
 
-
-
-
