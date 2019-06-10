@@ -44,7 +44,9 @@ public class Conversation_Adoper extends RecyclerView.Adapter<Conversation_Adope
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
              final    Conversation conversation=conversations.get(position);
-                holder.time.setText(conversation.getTime()+"");
+
+//             holder.time.setText(conversation.getTime()+"");
+
                 holder.msg.setText(conversation.getLast_msg()+"");
                 holder.name.setText(conversation.getId());
         Picasso.get().load(conversation.getUrl()).into(new Target() {
