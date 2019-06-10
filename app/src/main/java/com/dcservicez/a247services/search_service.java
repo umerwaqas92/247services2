@@ -255,6 +255,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                             if(!isActive){
 
                                 Log.e("GMAP", "Check");
+
                                 return;
 
                             }

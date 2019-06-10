@@ -39,6 +39,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dcservicez.a247services.Prefs.Prefs;
+import com.dcservicez.a247services.objects.Chat_Itm;
 import com.dcservicez.a247services.objects.MyLocation;
 import com.dcservicez.a247services.objects.Review_item;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -64,6 +65,7 @@ public class SP_Main_Acitvity extends AppCompatActivity
 
     private FusedLocationProviderClient fusedLocationClient;
     Button button;
+    boolean isFirstime=true;
 
 
     @Override
@@ -73,6 +75,44 @@ public class SP_Main_Acitvity extends AppCompatActivity
         prefs = new Prefs(this);
         context = this;
         button=(Button)findViewById(R.id.sp_main_btn);
+
+        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot data, @Nullable String s) {
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                try {
+                    if(isFirstime){
+                        startActivity(new Intent(context,Chat_Conversations.class));
+                    }
+                    isFirstime=false;
+                }catch (Exception e){
+                    Log.e("chat",e.toString());
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").addChildEventListener(new ChildEventListener() {
             @Override
@@ -99,7 +139,12 @@ public class SP_Main_Acitvity extends AppCompatActivity
                                             button.setVisibility(View.VISIBLE);
                                         }
                                     }).create();
-                            alertDialog.show();
+                            try {
+                                alertDialog.show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                startActivity(new Intent(context,SP_Main_Acitvity.class));
+                            }
                         }
             }
 

@@ -54,6 +54,8 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
     Button btn_hire,btn_show_map,btn_leave_conersation;
     boolean show_fragment=false;
+    boolean isFirstime=true;
+    boolean isFirstime2=true;
 
     public void View_profile_his(View view){
         Intent i=new Intent(this,Sp_Profile.class);
@@ -101,6 +103,9 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
             id=getIntent().getExtras().getString("user_id");
 
            chat_menu_fragment=(LinearLayout)findViewById(R.id.chat_menu_fragment);
+
+           //olny if you are a customer
+           if(prefs.sverc_type().isEmpty())
             check_task_status();
 
            btn_leave_conersation=(Button)findViewById(R.id.btn_leave_conversation);
@@ -124,13 +129,79 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
             recyclerView.setLayoutManager(linearLayoutManager);
 
-            if(!prefs.sverc_type().isEmpty()){
+            if(!prefs.sverc_type().isEmpty() ){
                 ///it is customer
+
                 btn_hire.setVisibility(View.GONE);
 //                ((Button)findViewById(R.id.View_profile_his)).setVisibility(View.GONE);
+                FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull final DataSnapshot dataSnapshot, @Nullable String s) {
+                        int status=Integer.parseInt(dataSnapshot.child("status").getValue().toString());
+
+
+                        if(status==0){
+//                            AlertDialog alertDialog=new AlertDialog.Builder(context)
+//                                    .setTitle("New Task")
+//                                    .setMessage("Do you accpet this task?")
+//                                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialogInterface, int i) {
+//                                            FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(-1);//rejected
+//                                        }
+//                                    })
+//                                    .setCancelable(false)
+//                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialogInterface, int i) {
+//                                            FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(1);//accpted
+//                                            FirebaseDatabase.getInstance().getReference("Users").child(dataSnapshot.child("id").getValue().toString()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(1);//accpted
+////                                            button.setVisibility(View.VISIBLE);
+//
+//
+//                                        }
+//                                    }).create();
+                            try {
+                                startActivity(new Intent(context,SP_Main_Acitvity.class));
+                                finish();
+
+//                                alertDialog.show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull final DataSnapshot dataSnapshot, @Nullable String s) {
+                        int status=Integer.parseInt(dataSnapshot.child("status").getValue().toString());
+
+
+
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
 
 
             }
+
+
 
 
             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").child(id).addChildEventListener(new ChildEventListener() {
@@ -348,7 +419,11 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
                                     }
                                 }).create();
-                        alertDialog.show();
+                        try {
+                            alertDialog.show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 

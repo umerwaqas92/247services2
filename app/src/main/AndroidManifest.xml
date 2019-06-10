@@ -23,6 +23,7 @@
         <activity android:name=".Chat_Conversations" />
         <activity android:name=".about_sp_profile" />
         <activity
+            android:launchMode="singleInstance"
             android:name=".SP_Main_Acitvity"
             android:label="@string/title_activity_sp__main__acitvity" />
         <activity android:name=".Customer_menu" />
@@ -59,8 +60,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Signup_sp" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Sp_first_activity" />
+        <activity android:name=".MainActivity"  />
+        <activity android:name=".Sp_first_activity"  />
     </application>
 
 </manifest>
