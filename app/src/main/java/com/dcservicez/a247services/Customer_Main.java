@@ -338,8 +338,12 @@ public class Customer_Main extends AppCompatActivity
                         // Got last known location. In some rare situations this can be null.
                         // Log.e("GMAP",location.getLongitude()+"");
 
-                        MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
-                        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("location").setValue(myLocation);
+                        try {
+                            MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
+                            FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("location").setValue(myLocation);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
                         if (location != null) {
                             // Logic to handle location object
