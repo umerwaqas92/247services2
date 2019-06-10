@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,7 +35,7 @@ public class Reviw_User extends AppCompatActivity {
     }
 
     public void click_done(View view){
-        try {
+//        try {
             int rate=(int)((RatingBar)findViewById(R.id.review_ratingbar)).getRating();
             String review=((EditText)findViewById(R.id.review_edtxt)).getText().toString();
 
@@ -46,9 +47,12 @@ public class Reviw_User extends AppCompatActivity {
             }
 
             finish();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//
+//
+//
+//        }
 
 
     }
