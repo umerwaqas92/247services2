@@ -390,12 +390,16 @@ public class SP_Main_Acitvity extends AppCompatActivity
 //        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Longitude").setValue(location.getLongitude());
 
 
-        MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
+        try {
+            MyLocation myLocation=new MyLocation(location.getLatitude(),location.getLongitude());
 
-//        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
-        ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).setValue(myLocation);
+///     ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).child("Latitude").setValue(location.getLatitude());
+            ref.child("service_provider_location").child(prefs.sverc_type()).child(prefs.email()).setValue(myLocation);
 
-        ref.child(prefs.email()).child("location").setValue(myLocation);
+            ref.child(prefs.email()).child("location").setValue(myLocation);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
