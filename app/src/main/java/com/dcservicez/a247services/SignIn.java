@@ -52,8 +52,8 @@ public class SignIn extends AppCompatActivity {
   }
 
     void getViews(){
-        edt_email=(EditText)findViewById(R.id.edt_signin_email);
-        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
+//        edt_email=(EditText)findViewById(R.id.edt_signin_email);
+//        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
     }
 
     //coments added

@@ -38,7 +38,6 @@ public class Reviw_User extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference("Users").child(id).child("service").child("reviews").child(prefs.email()).setValue(review1);
             }else{
                 FirebaseDatabase.getInstance().getReference("Users").child(id).child("reviews").child(prefs.email()).setValue(review1);
-
             }
 
             finish();
