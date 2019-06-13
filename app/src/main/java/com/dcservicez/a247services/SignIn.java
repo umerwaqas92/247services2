@@ -52,11 +52,11 @@ public class SignIn extends AppCompatActivity {
   }
 
     void getViews(){
-//        edt_email=(EditText)findViewById(R.id.edt_signin_email);
-//        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
     }
 
     //coments added
+    //        edt_email=(EditText)findViewById(R.id.edt_signin_email);
+//        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
