@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -259,6 +260,67 @@ public class SP_Main_Acitvity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+
+
+        ///new msg
+
+        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("notify").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("title").getValue()!=null)
+                    new AlertDialog.Builder(context)
+                            .setTitle(dataSnapshot.child("title").getValue().toString())
+                            .setCancelable(false)
+                            .setMessage(dataSnapshot.child("msg").getValue().toString())
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("notify").setValue(null);
+                                }
+                            })
+                            .show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        ////blocked
+        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("isBlock").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(Boolean.parseBoolean(dataSnapshot.getValue().toString())){
+                    new AlertDialog.Builder(context)
+                            .setTitle("Blocked!")
+                            .setCancelable(false)
+                            .setMessage("Your account has been blocked by Admin, for more info contact the 247Service support team")
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    prefs.setLogin(false);
+                                    startActivity(new Intent(context,SignIn.class));
+                                    finish();
+                                }
+                            })
+                            .show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        ///end
+
+new Handler().postDelayed(new Runnable() {
+    @Override
+    public void run() {
         FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
@@ -372,6 +434,8 @@ public class SP_Main_Acitvity extends AppCompatActivity
             }
         });
 
+    }
+},1000);
 
 
     }
@@ -463,6 +527,20 @@ public class SP_Main_Acitvity extends AppCompatActivity
 
                 }
             });
+
+        }else if(id==R.id.nav_logout){
+            new AlertDialog.Builder(context)
+                    .setTitle("Are you sure want to logout?")
+                    .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            prefs.setLogin(false);
+                            startActivity(new Intent(context,SignIn.class));
+                            finish();
+
+                        }
+                    })
+                    .setPositiveButton("No",null).show();
 
         }
 
