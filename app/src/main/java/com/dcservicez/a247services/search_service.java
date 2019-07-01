@@ -249,62 +249,57 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
 
 
 
-                            String profile_url=dataSnapshot.child("profile_url").getValue().toString();
+                            if(dataSnapshot.child("profile_url").getValue()!=null) {
+                                String profile_url = dataSnapshot.child("profile_url").getValue().toString();
 
-                            boolean isActive=Boolean.parseBoolean(dataSnapshot.child("service").child("active").getValue().toString());
-                            if(!isActive){
+                                boolean isActive = Boolean.parseBoolean(dataSnapshot.child("service").child("active").getValue().toString());
+                                if (!isActive) {
 
-                                Log.e("GMAP", "Check");
+                                    Log.e("GMAP", "Check");
 
-                                return;
+                                    return;
+
+                                }
+
+                                Log.i("Search_Service", dataSnapshot.getValue().toString());
+
+
+                                Transformation transformation = new RoundedTransformationBuilder()
+                                        .borderColor(Color.parseColor("#6776c0ff"))
+                                        .borderWidthDp(10)
+                                        .cornerRadiusDp(30)
+                                        .oval(false)
+                                        .build();
+
+
+                                Log.e("Search_service", profile_url);
+                                Log.e("Search_service", service_type);
+                                Log.e("Search_service", data.getKey().toString());
+
+                                if (profile_url != null)
+                                    Picasso.get().load(profile_url).resize(110, 110).centerCrop().transform(transformation).into(new Target() {
+                                        @Override
+                                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                                            BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
+
+                                            mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()), Float.parseFloat(data.child("longitude").getValue().toString()))));
+
+
+                                        }
+
+                                        @Override
+                                        public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                                        }
+
+                                        @Override
+                                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                                        }
+                                    });
+
 
                             }
-
-                            Log.i("Search_Service",dataSnapshot.getValue().toString());
-
-
-
-
-                            Transformation transformation = new RoundedTransformationBuilder()
-                                    .borderColor(Color.parseColor("#6776c0ff"))
-                                    .borderWidthDp(10)
-                                    .cornerRadiusDp(30)
-                                    .oval(false)
-                                    .build();
-
-
-
-
-
-
-                                Log.e("Search_service",profile_url);
-                                Log.e("Search_service",service_type);
-                                Log.e("Search_service",data.getKey().toString());
-
-                                if(profile_url!=null)
-                                Picasso.get().load(profile_url).resize(110,110).centerCrop().transform(transformation).into(new Target() {
-                                    @Override
-                                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                                       BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
-
-                                            mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()),Float.parseFloat(data.child("longitude").getValue().toString()))));
-
-
-                                    }
-
-                                    @Override
-                                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-
-                                    }
-
-                                    @Override
-                                    public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                                    }
-                                });
-
-
-
 
                         }
 
