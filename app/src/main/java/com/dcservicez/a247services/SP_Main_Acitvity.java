@@ -292,7 +292,8 @@ public class SP_Main_Acitvity extends AppCompatActivity
         FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("isBlock").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(Boolean.parseBoolean(dataSnapshot.getValue().toString())){
+                if(dataSnapshot.getValue()!=null)
+                    if(Boolean.parseBoolean(dataSnapshot.getValue().toString())){
                     new AlertDialog.Builder(context)
                             .setTitle("Blocked!")
                             .setCancelable(false)
