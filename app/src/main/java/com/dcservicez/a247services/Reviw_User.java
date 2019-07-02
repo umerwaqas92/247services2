@@ -38,7 +38,7 @@ public class Reviw_User extends AppCompatActivity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        FirebaseDatabase.getInstance().getReference("Reports").child(id).setValue(editText.getText().toString());
+                        FirebaseDatabase.getInstance().getReference("Reports").child(id).child(prefs.email()).setValue(editText.getText().toString());
                         Toast.makeText(Reviw_User.this,"Report has been sent successfully ",Toast.LENGTH_SHORT).show();
 
                     }
