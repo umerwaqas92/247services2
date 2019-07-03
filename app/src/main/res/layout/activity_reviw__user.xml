@@ -29,5 +29,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+
+        android:text="Report this user"
+        android:layout_marginTop="20dp"
+        android:onClick="click_report"
+       android:background="@android:color/transparent"
+        android:textSize="16dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

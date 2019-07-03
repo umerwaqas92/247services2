@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 public class Prefs {
     private Context context;
@@ -36,4 +37,17 @@ public class Prefs {
     public String email(){
         return  sharedPref.getString("email","");
     }
+
+    public boolean islogin(){
+        return  sharedPref.getBoolean("islogin",false);
+    }
+
+    public void setLogin(boolean login){
+          sharedPref.edit().putBoolean("islogin",login).apply();
+        Toast.makeText(context,islogin()+"",Toast.LENGTH_SHORT).show();
+
+    }
+
+
+
 }

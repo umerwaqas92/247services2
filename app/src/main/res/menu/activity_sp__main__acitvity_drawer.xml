@@ -19,6 +19,11 @@
                 android:icon="@drawable/profile1_xml"
                 android:title="Profile Managment" />
 
+            <item
+                android:id="@+id/nav_logout"
+
+                android:title="Logout" />
+
         </menu>
     </item>
 

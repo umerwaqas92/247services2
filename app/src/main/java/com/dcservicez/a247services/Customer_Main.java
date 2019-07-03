@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -42,6 +43,7 @@ import android.widget.Toast;
 
 import com.dcservicez.a247services.Adopters.Services_Adopter;
 import com.dcservicez.a247services.Prefs.Prefs;
+import com.dcservicez.a247services.debugs.Debug;
 import com.dcservicez.a247services.objects.MyLocation;
 import com.dcservicez.a247services.objects.Review_item;
 import com.dcservicez.a247services.objects.Service;
@@ -97,6 +99,8 @@ public class Customer_Main extends AppCompatActivity
 
         update_location();
 
+
+
 //        check_task_status();
 
 
@@ -110,6 +114,64 @@ public class Customer_Main extends AppCompatActivity
             }
         });
 
+
+
+        //notify/
+        //      title
+        //      msg
+
+
+           FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("notify").addListenerForSingleValueEvent(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   if(dataSnapshot.child("title").getValue()!=null)
+                   new AlertDialog.Builder(context)
+                           .setTitle(dataSnapshot.child("title").getValue().toString())
+                           .setCancelable(false)
+                           .setMessage(dataSnapshot.child("msg").getValue().toString())
+                           .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialogInterface, int i) {
+                                   FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("notify").setValue(null);
+                               }
+                           })
+                           .show();
+               }
+
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+
+               }
+           });
+
+
+
+        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("isBlock").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue()!=null)
+                if(Boolean.parseBoolean(dataSnapshot.getValue().toString())){
+                    new AlertDialog.Builder(context)
+                            .setTitle("Blocked!")
+                            .setCancelable(false)
+                            .setMessage("Your account has been blocked by Admin, for more info contact the 247Service support team")
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    prefs.setLogin(false);
+                                    startActivity(new Intent(context,SignIn.class));
+                                    finish();
+                                }
+                            })
+                            .show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         edt_search.addTextChangedListener(new TextWatcher() {
@@ -140,42 +202,61 @@ public class Customer_Main extends AppCompatActivity
             }
         });
 
+        if(!prefs.email().isEmpty()){
+            new Debug(context).print(prefs.email());
 
-        FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).addValueEventListener(new ValueEventListener() {
+        }else {
+            return;
+        }
+
+
+
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-
-                TextView textView_namme=(TextView)findViewById(R.id.nav_heder_name);
-
-
-                textView_namme.setText(dataSnapshot.child("fullname").getValue().toString().toUpperCase());
-                Picasso.get().load(dataSnapshot.child("profile_url").getValue().toString()).into(new Target() {
+            public void run() {
+                FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
 
-                        ImageView img_profile=(ImageView)findViewById(R.id.nav_heder_profilePic);
+                        TextView textView_namme=(TextView)findViewById(R.id.nav_heder_name);
 
-                        img_profile.setImageBitmap(bitmap);
+
+//                    Log.e("bugs",dataSnapshot.toString())
+
+                        textView_namme.setText(dataSnapshot.child("fullname").getValue().toString().toUpperCase());
+
+
+                        Picasso.get().load(dataSnapshot.child("profile_url").getValue().toString()).into(new Target() {
+                            @Override
+                            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+                                ImageView img_profile=(ImageView)findViewById(R.id.nav_heder_profilePic);
+
+                                img_profile.setImageBitmap(bitmap);
+                            }
+
+                            @Override
+                            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                            }
+
+                            @Override
+                            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                            }
+                        });
+
                     }
 
                     @Override
-                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-
-                    }
-
-                    @Override
-                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
                 });
-
             }
+        },1000);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
@@ -369,6 +450,20 @@ public class Customer_Main extends AppCompatActivity
         } else if (id == R.id.nav_home) {
 
             startActivity(new Intent(this, Chat_Conversations.class));
+        }else if(id==R.id.nav_logout){
+            new AlertDialog.Builder(context)
+                    .setTitle("Are you sure want to logout?")
+                    .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            prefs.setLogin(false);
+                            startActivity(new Intent(context,SignIn.class));
+                            finish();
+
+                        }
+                    })
+                    .setPositiveButton("No",null).show();
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -147,6 +147,7 @@ public class MainActivity extends Activity {
             String key =  email.getText().toString().replace(".", ",");
 
             ref.child(key).child("fullname").setValue(fullName.getText().toString());
+            ref.child(key).child("isBlock").setValue(false);
             ref.child(key).child("mobile_no").setValue(mobileNo.getText().toString());
 //            ref.child(key).child("Email").setValue(email.getText().toString());
             ref.child(key).child("password").setValue(pass.getText().toString());

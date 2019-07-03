@@ -1,5 +1,7 @@
 package com.dcservicez.a247services;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +28,25 @@ public class Reviw_User extends AppCompatActivity {
         isSP=getIntent().getExtras().getBoolean("isSP");
     }
 
+
+    public void click_report(View view){
+        final EditText editText= new EditText(this);
+        editText.setHint("Write a report");
+
+        new AlertDialog.Builder(this).setTitle("Report against "+id)
+                .setView(editText)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseDatabase.getInstance().getReference("Reports").child(id).child(prefs.email()).setValue(editText.getText().toString());
+                        Toast.makeText(Reviw_User.this,"Report has been sent successfully ",Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .setNegativeButton("No",null).setCancelable(false)
+                .show();
+
+    }
 
 
     public void click_done(View view){

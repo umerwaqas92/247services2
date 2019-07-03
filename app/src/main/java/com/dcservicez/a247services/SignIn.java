@@ -55,9 +55,27 @@ public class SignIn extends AppCompatActivity {
 
 
         requestForSpecificPermission();
+
+//        prefs.setLogin(true);
+        if(prefs.islogin()){
+            if(prefs.sverc_type().isEmpty()){
+                startActivity(new Intent(context, Customer_Main.class));
+            }else{
+                startActivity(new Intent(context, SP_Main_Acitvity.class));
+
+            }
+            finish();
+        }
+
+//        Intent intent=new Intent(context, Reviw_User.class);
+//        intent.putExtra("user_id","demoapp92333@gmail,com");
+//        startActivity(intent);
   }
 
     void getViews(){
+        edt_email=(EditText)findViewById(R.id.edt_signin_email);
+        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
+
     }
 
     //coments added
@@ -115,16 +133,17 @@ public class SignIn extends AppCompatActivity {
                        d.hide();
 
                        if (edt_pass.getText().toString().equals(dataSnapshot.child("password").getValue().toString())) {
-                           new Debug(context).print("Login success");
+//                           new Debug(context).print("Login success");
                            try {
                                prefs.sverc_type(dataSnapshot.child("service").child("title").getValue().toString());
                                //new Debug(context).print("you are sp"+dataSnapshot.child("service").getValue().toString());
+                               prefs.setLogin(true);
                                startActivity(new Intent(context, SP_Main_Acitvity.class));
                                finish();
 
                            } catch (Exception e) {
                                prefs.sverc_type("");
-
+                               prefs.setLogin(true);
                                startActivity(new Intent(context, Customer_Main.class));
                                finish();
 
