@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -40,12 +41,17 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        getViews();
+        Log.e("Hello","Passed");
+        //getViews();
         context=this;
         dilouges=new Dilouges(context);
         prefs=new Prefs(context);
+        edt_email=(EditText)findViewById(R.id.edt_signin_email);
+        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
+
 
         edt_email.setText(prefs.email().replace(",","."));
+
 
 
         requestForSpecificPermission();
@@ -55,8 +61,6 @@ public class SignIn extends AppCompatActivity {
     }
 
     //coments added
-    //        edt_email=(EditText)findViewById(R.id.edt_signin_email);
-//        edt_pass=(EditText)findViewById(R.id.edt_signin_password);
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

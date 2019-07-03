@@ -36,6 +36,7 @@ public class Select_service extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_service);
         context=this;
+        Log.e("Select service","Passed 1");
         recyclerView=(RecyclerView)findViewById(R.id.service_select_recyclerView);
         edt_search=(EditText)findViewById(R.id.select_service_searrch_edt);
 
@@ -77,6 +78,7 @@ public class Select_service extends AppCompatActivity {
                         Service service=new Service(data.child("title").getValue().toString(),data.child("img_url").getValue().toString(),Integer.parseInt(data.child("color").getValue().toString()),data.getKey().toString());
                         services.add(service);
                         services_Filter.add(service);
+                    Log.e("Select service","Passed 2");
                 }
                 update_recyler_view();
 
@@ -95,6 +97,7 @@ public class Select_service extends AppCompatActivity {
     public void update_recyler_view() {
 
         adopter=new Services_Adopter(services_Filter, Select_service.this);
+        Log.e("Select service","Passed 3");
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false);
         GridLayoutManager gridLayoutManager=new GridLayoutManager(context,2) ;
         recyclerView.setAdapter(adopter);
@@ -106,6 +109,7 @@ public class Select_service extends AppCompatActivity {
         for (Service s:services) {
             if(s.getTitle().toLowerCase().contains(q.toLowerCase())){
                 services_Filter.add(s);
+                Log.e("Select service","Passed 4");
             }
         }
 

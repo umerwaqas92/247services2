@@ -30,10 +30,12 @@ public class Services_Adopter extends  RecyclerView.Adapter<Services_Adopter.Vie
         ArrayList<Service> services;
         Context context;
 
+
     public Services_Adopter(ArrayList<Service> services, Context context) {
 
         this.services = services;
         this.context = context;
+        Log.e("Select service","Passed adofter");
     }
 
 
@@ -46,13 +48,14 @@ public class Services_Adopter extends  RecyclerView.Adapter<Services_Adopter.Vie
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         view= LayoutInflater.from(context).inflate(R.layout.service_item,parent,false);
-
-//        Log.i("service24/7_Adopter","created");
+        Log.e("Select service","Passed adofter 1");
+       // Log.i("service24/7_Adopter","created");
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.e("Select service","Passed adofter 2");
         final Service service=services.get(position);
         holder.title.setText(service.getTitle());
         Picasso.get().load(service.getImg_url()).into(holder.imageView);
