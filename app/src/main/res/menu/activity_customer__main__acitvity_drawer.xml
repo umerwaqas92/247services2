@@ -22,6 +22,7 @@
 
             <item
                 android:id="@+id/nav_logout"
+                android:icon="@drawable/logout_pic"
                 android:title="Logout" />
 
         </menu>
@@ -31,6 +32,7 @@
         <menu>
             <item
                 android:id="@+id/status_change"
+
                 android:title="Become Service Provider" />
 
         </menu>
