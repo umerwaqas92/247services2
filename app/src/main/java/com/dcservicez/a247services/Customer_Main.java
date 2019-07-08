@@ -301,6 +301,21 @@ public class Customer_Main extends AppCompatActivity
             public void onChildChanged(@NonNull final DataSnapshot dataSnapshot, @Nullable String s) {
                 int status=Integer.parseInt(dataSnapshot.child("status").getValue().toString());
 
+                if(status==-1){
+                    AlertDialog alertDialog=new AlertDialog.Builder(context)
+                            .setMessage("Your request has been canceled")
+                            .setTitle("Canceled!")
+                            .setTitle("Canceled!")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            }).create();
+                    alertDialog.show();
+                }
+
                 if(status==8){
                     AlertDialog alertDialog=new AlertDialog.Builder(context)
                             .setMessage("Rate the user")
