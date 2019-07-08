@@ -28,14 +28,6 @@
         </menu>
     </item>
 
-    <item android:title="Service Provider" >
-        <menu>
-            <item
-                android:id="@+id/status_change"
 
-                android:title="Become Service Provider" />
-
-        </menu>
-    </item>
 
 </menu>

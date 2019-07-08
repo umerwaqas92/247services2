@@ -391,7 +391,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                     if(status==6){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
                                 .setMessage("Task Completion")
-                                .setTitle("Is your Service Provider done his job?")
+                                .setTitle("Your Service Provider done his job?")
                                 .setCancelable(false)
                                 .setNegativeButton("No",null)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -408,7 +408,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                     if(status==4){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
                                 .setMessage("Arrived")
-                                .setTitle("Is your Service Provider have arrived?")
+                                .setTitle("Your Service Provider have arrived?")
                                 .setCancelable(false)
                                 .setNegativeButton("No",null)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
