@@ -76,7 +76,6 @@ public class SP_Main_Acitvity extends AppCompatActivity
         prefs = new Prefs(this);
         context = this;
         button=(Button)findViewById(R.id.sp_main_btn);
-        Log.e("Sp main","Passed 1");
         FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("messages").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot data, @Nullable String s) {
