@@ -114,9 +114,9 @@
             android:layout_height="26dp"
             android:layout_marginStart="25dp"
             android:numStars="5"
-            android:rating=""/>
+            android:rating="0"/>
 
-        0<TextView
+        <TextView
             android:id="@+id/sp_rating_txtview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
