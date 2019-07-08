@@ -57,12 +57,20 @@ public class Reviw_User extends AppCompatActivity {
 
             if(isSP){
                 FirebaseDatabase.getInstance().getReference("Users").child(id).child("service").child("reviews").child(prefs.email()).setValue(review1);
+
+                Intent ii=new Intent(Reviw_User.this,Customer_Main.class);
+                ii.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(ii);
             }else{
                 FirebaseDatabase.getInstance().getReference("Users").child(id).child("reviews").child(prefs.email()).setValue(review1);
+                Intent ii=new Intent(Reviw_User.this,SP_Main_Acitvity.class);
+                ii.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(ii);
             }
-            Intent ii=new Intent(Reviw_User.this,Select_service.class);
-            startActivity(ii);
-            finish();
+
+                     finish();
         } catch (Exception e) {
             e.printStackTrace();
         }
