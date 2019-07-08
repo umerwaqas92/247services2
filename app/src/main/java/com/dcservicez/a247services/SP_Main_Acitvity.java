@@ -129,6 +129,8 @@ public class SP_Main_Acitvity extends AppCompatActivity
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(-1);//rejected
+                                            FirebaseDatabase.getInstance().getReference("Users").child(dataSnapshot.child("id").getValue().toString()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(-1);//accpted
+
                                         }
                                     })
                                     .setCancelable(false)
