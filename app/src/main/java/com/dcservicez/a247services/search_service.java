@@ -196,7 +196,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                     Log.i("srarch_activity", marker.getTitle());
                     Log.e("go sp", "show");
                     Intent i = new Intent(search_service.this, Sp_Profile.class);
-                    i.putExtra("user_id", marker.getTitle());
+                    i.putExtra("user_id", marker.getSnippet());
                     startActivity(i);
 
                 }
@@ -285,7 +285,7 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                                             FirebaseDatabase.getInstance().getReference("Users").child(data.getKey()).child("fullname").addListenerForSingleValueEvent(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                    mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()), Float.parseFloat(data.child("longitude").getValue().toString()))));
+                                                    mMap.addMarker(new MarkerOptions().snippet(data.getKey().toString()).icon(icon).title(dataSnapshot.getValue().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()), Float.parseFloat(data.child("longitude").getValue().toString()))));
 
                                                 }
 
