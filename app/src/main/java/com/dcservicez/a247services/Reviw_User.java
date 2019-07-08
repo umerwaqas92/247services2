@@ -1,6 +1,7 @@
 package com.dcservicez.a247services;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.widget.Toast;
 
 import com.dcservicez.a247services.Prefs.Prefs;
 import com.dcservicez.a247services.objects.Review;
-import com.dcservicez.a247services.objects.Review_item;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Reviw_User extends AppCompatActivity {
@@ -60,13 +60,11 @@ public class Reviw_User extends AppCompatActivity {
             }else{
                 FirebaseDatabase.getInstance().getReference("Users").child(id).child("reviews").child(prefs.email()).setValue(review1);
             }
-
+            Intent ii=new Intent(Reviw_User.this,Select_service.class);
+            startActivity(ii);
             finish();
         } catch (Exception e) {
             e.printStackTrace();
-//
-//
-//
         }
 
 

@@ -358,10 +358,10 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
 
                     if(status==8){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
-                                .setMessage("Rate the user")
+                                .setMessage("Rate the Service Provider")
                                 .setTitle("How was the service ?")
                                 .setCancelable(false)
-                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(10);//accpted
@@ -380,6 +380,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                                 .setMessage("Task Completion")
                                 .setTitle("Is your Service Provider done his job?")
                                 .setCancelable(false)
+                                .setNegativeButton("No",null)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -394,8 +395,9 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                     if(status==4){
                         AlertDialog alertDialog=new AlertDialog.Builder(context)
                                 .setMessage("Arrived")
-                                .setTitle("Is your Service Provider is arrived?")
+                                .setTitle("Is your Service Provider have arrived?")
                                 .setCancelable(false)
+                                .setNegativeButton("No",null)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -411,7 +413,7 @@ public class Chat_activity extends AppCompatActivity implements View.OnClickList
                                 .setMessage("Your assigned task is accepted")
                                 .setTitle("Accepted")
                                 .setCancelable(false)
-                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         FirebaseDatabase.getInstance().getReference("Users").child(prefs.email()).child("tasks").child(dataSnapshot.getKey()).child("status").setValue(3);//accpted

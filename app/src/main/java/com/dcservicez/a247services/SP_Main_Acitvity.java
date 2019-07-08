@@ -124,7 +124,7 @@ public class SP_Main_Acitvity extends AppCompatActivity
                         if(status==0){
                             AlertDialog alertDialog=new AlertDialog.Builder(context)
                                     .setTitle("New Task")
-                                    .setMessage("Do you accpet this task?")
+                                    .setMessage("Do you accept this task?")
                                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -177,7 +177,7 @@ public class SP_Main_Acitvity extends AppCompatActivity
 
                 if(status==3){
                     button.setVisibility(View.VISIBLE);
-                    button.setText("Im arrived");
+                    button.setText("I have arrived");
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
