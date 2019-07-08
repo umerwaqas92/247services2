@@ -280,10 +280,20 @@ public class search_service extends FragmentActivity implements OnMapReadyCallba
                                     Picasso.get().load(profile_url).resize(110, 110).centerCrop().transform(transformation).into(new Target() {
                                         @Override
                                         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                                            BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
+                                           final BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
 
-                                            mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()), Float.parseFloat(data.child("longitude").getValue().toString()))));
+                                            FirebaseDatabase.getInstance().getReference("Users").child(data.getKey()).child("fullname").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    mMap.addMarker(new MarkerOptions().icon(icon).title(data.getKey().toString()).position(new LatLng(Float.parseFloat(data.child("latitude").getValue().toString()), Float.parseFloat(data.child("longitude").getValue().toString()))));
 
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
 
                                         }
 
