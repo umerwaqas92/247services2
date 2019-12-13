@@ -1,6 +1,5 @@
 package com.dcservicez.a247services;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
